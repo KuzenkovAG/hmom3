@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  {% include 'includes/load_styles.html' %}
+  <title>
+    {% block title %}
+    {{ title }}
+    {% endblock %}
+  </title>
+</head>
+<body>
+<main>
+  <div class="container d-flex justify-content-center">
+    <div class="login-page">
+      <div class="game-logo">
+        <div class="login-box">
+          {% block content %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="page-footer font-small blue border-top">
+  {% include 'includes/footer.html' %}
+</footer>
+</body>
+</html>

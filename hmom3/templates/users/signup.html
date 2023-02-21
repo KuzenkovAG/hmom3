@@ -1,15 +1,39 @@
-{% extends "base.html" %}
+{% extends "base_user.html" %}
 {% block title %}Зарегистрироваться{% endblock %}
 {% block content %}
 {% load user_filters %}
-<div class="row justify-content-center">
-  <div class="col-md-8 p-5">
-    <div class="card">
-      <div class="card-header">Зарегистрироваться</div>
-      <div class="card-body">
-        {% include 'includes/default_form.html' %}
-      </div> <!-- card body -->
-    </div> <!-- card -->
-  </div> <!-- col -->
-</div> <!-- row -->
+
+<div align="center">
+  <h4>Регистрация</h4>
+  <form method="post"
+        {% if action_url %}
+        action="{% url action_url %}"
+        {% endif %}
+        enctype="multipart/form-data"
+  >
+    <table cellspacing="0" style="padding-top: 5px">
+      {% csrf_token %}
+      {% for field in form %}
+      <tr>
+        <th width="150px" style="text-align:right">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        </th>
+        <td>
+          {{ field|addclass:'form-login' }}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% if request.resolver_match.view_name == 'users:login' %}
+    <a href="{% url 'users:password_reset' %}">Забыли пароль?</a>
+    {% endif %}
+    <div style="width: 310px; padding-top:5px">
+      <a class="btn-register" href="{% url 'users:login' %}" title="Отмена">Отмена</a>
+      <button type="submit" class="btn-enter">
+        Готово
+      </button>
+    </div>
+  </form>
+</div>
+
 {% endblock %}

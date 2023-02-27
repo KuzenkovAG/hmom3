@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from towns.models import Fractions
 
 
 class User(AbstractUser):
@@ -9,8 +10,16 @@ class User(AbstractUser):
         unique=True,
         error_messages={'unique': "A email already exists."},
     )
+    fraction = models.ForeignKey(
+        Fractions,
+        on_delete=models.SET_DEFAULT,
+        related_name='fractions',
+        verbose_name='Фракция',
+        default=Fractions.objects.filter(id=1)[0],
+    )
 
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['email']
 
-    class Meta(AbstractUser.Meta):
-        swappable = 'AUTH_USER_MODEL'
+    class Meta:
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'

@@ -14,9 +14,9 @@ from . import views
 app_name = 'users'
 
 urlpatterns = [
-    path('registration/',
+    path('signup/',
          views.UserCreationView.as_view(),
-         name='registration'),
+         name='signup'),
     path('login/',
          LoginView.as_view(
             template_name='users/login.html',

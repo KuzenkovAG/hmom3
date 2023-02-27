@@ -1,39 +1,106 @@
 {% extends "base_user.html" %}
+{% load user_filters %}
+{% load static %}
 {% block title %}Зарегистрироваться{% endblock %}
 {% block content %}
-{% load user_filters %}
 
-<div align="center">
-  <h4>Регистрация</h4>
-  <form method="post"
-        {% if action_url %}
-        action="{% url action_url %}"
-        {% endif %}
-        enctype="multipart/form-data"
-  >
-    <table cellspacing="0" style="padding-top: 5px">
-      {% csrf_token %}
-      {% for field in form %}
-      <tr>
-        <th width="150px" style="text-align:right">
-          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-        </th>
-        <td>
-          {{ field|addclass:'form-login' }}
-        </td>
-      </tr>
+
+
+<div class="login-page">
+  <div class="signup-background">
+    <div class="sign-box">
+      <div align="center">
+        <h4 style="color:#fff">Регистрация</h4>
+        <form method="post"
+              {% if action_url %}
+              action="{% url action_url %}"
+              {% endif %}
+              enctype="multipart/form-data"
+        >
+          <div class="fraction-box" >
+            <h5 id="fraction-header">{{ fractions.0.name }}</h5>
+            <span class="btn-selection" onclick="setIndex(-1)">
+              <
+            </span>
+              <img id="imgid" src="/media/{{ fractions.0.image }}">
+
+<script>
+    var imageNo = 0
+
+    var ImageSources=[
+      {% for fraction in fractions %}
+      '/media/{{fraction.image}}',
       {% endfor %}
-    </table>
-    {% if request.resolver_match.view_name == 'users:login' %}
-    <a href="{% url 'users:password_reset' %}">Забыли пароль?</a>
-    {% endif %}
-    <div style="width: 310px; padding-top:5px">
-      <a class="btn-register" href="{% url 'users:login' %}" title="Отмена">Отмена</a>
-      <button type="submit" class="btn-enter">
-        Готово
-      </button>
+    ]
+    var Header=[
+      {% for fraction in fractions %}
+      '{{ fraction.name }}',
+      {% endfor %}
+    ]
+    var Description=[
+      {% for fraction in fractions %}
+      '{{ fraction.description }}',
+      {% endfor %}
+    ]
+    var Bonus=[
+      {% for fraction in fractions %}
+      '{{ fraction.bonus }}',
+      {% endfor %}
+    ]
+    function setIndex(idx) {
+        imageNo = (imageNo + idx)
+        if (imageNo>ImageSources.length -1) {imageNo=0}
+        if (imageNo<0) {imageNo=ImageSources.length -1}
+        console.log(imageNo)
+        document.getElementById('imgid').src = ImageSources[imageNo];
+        document.getElementById("fraction-header").innerHTML = Header[imageNo];
+        document.getElementById("fraction-description").innerHTML = Description[imageNo];
+        document.getElementById("fraction-bonus").innerHTML = Bonus[imageNo];
+        document.getElementById("id_fraction").value = imageNo + 1;
+    }
+</script>
+
+            <span class="btn-selection" onclick="setIndex(1)">
+              >
+            </span>
+            <p id="fraction-description" style="width: 600px;">
+              {{ fractions.0.description }}
+            </p>
+            <p id="fraction-bonus">
+              Особенность: {{ fractions.0.bonus }}
+            </p>
+          </div>
+          <table cellspacing="0" style="padding-top: 5px">
+            {% csrf_token %}
+            {% for field in form.hidden_fields %}
+            {{ field }}
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+            <tr>
+              <th width="150px" style="text-align:right">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              </th>
+              <td>
+                {{ field|addclass:'form-login' }}
+              </td>
+            </tr>
+            {% endfor %}
+          </table>
+          {% if request.resolver_match.view_name == 'users:login' %}
+          <a href="{% url 'users:password_reset' %}">Забыли пароль?</a>
+          {% endif %}
+          <div style="width: 310px; padding-top:5px">
+            <a class="btn-secondary" href="{% url 'users:login' %}" title="Отмена">Отмена</a>
+            <button type="submit" class="btn-primary">
+              Готово
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-  </form>
+  </div>
 </div>
+
 
 {% endblock %}

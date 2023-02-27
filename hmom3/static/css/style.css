@@ -23,9 +23,9 @@ body {
   border-top: 0px solid #dee2e6!important;
 }
 
-.login-page {
-
-}
+/*----------------------------*\
+	     Login-page
+\*----------------------------*/
 
 .game-logo {
     background-image: url('../img/index.png');
@@ -53,15 +53,49 @@ body {
   transition: all 0.6s ease;
 }
 
-.form-login {
-  width: 300px;
+.fraction-box {
+  display:inline-block;
 }
 
+#fraction-header {
+  font-weight: 700;
+}
+
+#fraction-bonus {
+  color: #319324;
+  font-weight: 700;
+}
 
 /*----------------------------*\
-	        Кнопки
+	     Signup
 \*----------------------------*/
-.btn-enter {
+
+.signup-background {
+    background-image: url('../img/old-paper2.jpg');
+    padding-top: 1px;
+    width: 980px;
+    height: 686px;
+}
+
+.sign-box {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    padding-left: 0px;
+    font-size: 16px;
+    font-family: Bahnschrift Light;
+}
+
+.selector {
+    background-image: url('../img/lines/left.png');
+    width: 150px;
+    height: 71px;
+    top: 50px;
+}
+
+/*----------------------------*\
+	        buttons
+\*----------------------------*/
+.btn-primary {
   display: inline-block;
   cursor: pointer;
   font-size: 18px;
@@ -72,7 +106,7 @@ body {
   border-radius: 26px;
   border: 4px solid #131511a6;
 }
-.btn-enter:hover {
+.btn-primary:hover {
   background: #131511;
   color: #ffffff;
   border: 4px solid #131511;
@@ -80,7 +114,7 @@ body {
 }
 
 /* Стили кнопки */
-.btn-register {
+.btn-secondary {
   display: inline-block;
   cursor: pointer;
   font-size: 18px;
@@ -92,9 +126,32 @@ body {
   border: 4px solid #131511a6;
 }
 
-.btn-register:hover {
+.btn-secondary:hover {
   background: #131511;
   color: #ffffff;
   border: 4px solid #131511;
   transition: all 0.6s ease;
+}
+
+
+.btn-selection {
+  position: relative;
+  cursor: pointer;
+  top: 5px;
+  display: inline-block;
+  font-size:43px;
+  color:#eaff00;
+  width: 50px;
+}
+
+.btn-selection:hover {
+  color:#ffe600;
+  transition: all 0.4s ease;
+}
+
+/*----------------------------*\
+	     Forms
+\*----------------------------*/
+.form-login {
+  width: 300px;
 }

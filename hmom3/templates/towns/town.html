@@ -1,0 +1,63 @@
+{% extends "base_town.html" %}
+{% load user_filters %}
+{% load static %}
+{% block title %}Город{% endblock %}
+{% block content %}
+
+
+<div class="town-view layout basic">
+
+</div>
+
+<div class="button-panel layout basic">
+  <div class="buttons-set layout basic" style="top: 20px; left: 20px;">
+    <div class="empty-button" style="left: 0px;">
+
+    </div>
+    <div class="empty-button" style="left: 50px;">
+
+    </div>
+    <div class="empty-button" style="left: 100px;">
+
+    </div>
+    <div class="empty-button" style="left: 150px;">
+
+    </div>
+  </div>
+  <div class="army-panel layout basic" style="top: 100px; left: 82px;">
+    <div class="empty-hero">
+
+    </div>
+    {% for slot in 7|times %}
+    <div class="empty-army slot{{ slot|add:1 }}" style="left:
+    {% widthratio slot|add:1 1 80 %}px;">
+    </div>
+    {% endfor %}
+  </div>
+  <div class="resources layout basic" style="top: 212px; left: 260px; z-index: 100; ">
+    <div style="hidden">
+      {{ resources.0.update_data }}
+    </div>
+    <div class="resources-gold layout basic">
+      <div class="resources-text">
+        {{ resources.0.gold_amount|floatformat:0 }}
+      </div>
+    </div>
+    <div class="resources-wood layout basic" style="left: 100px;">
+      <div class="resources-text">
+        {{ resources.0.wood_amount|floatformat:0 }}
+      </div>
+    </div>
+    <div class="resources-stone layout basic" style="left: 200px;">
+      <div class="resources-text">
+        {{ resources.0.stone_amount|floatformat:0 }}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="border-town layout basic">
+</div>
+
+{% endblock %}

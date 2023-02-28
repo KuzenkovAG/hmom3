@@ -30,13 +30,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users.apps.UsersConfig',
     'towns.apps.TownsConfig',
+    'users.apps.UsersConfig',
     'core.apps.CoreConfig',
     'sorl.thumbnail',
 ]
 
-AUTH_USER_MODEL = "users.User"
+AUTH_USER_MODEL = 'users.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -120,5 +120,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Login
 LOGIN_URL = 'users:login'
-LOGIN_REDIRECT_URL = 'users:login'
+LOGIN_REDIRECT_URL = 'towns:index'
 LOGOUT_REDIRECT_URL = 'users:login'

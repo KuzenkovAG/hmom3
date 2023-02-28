@@ -7,8 +7,6 @@
 	        Body
 \*----------------------------*/
 
-
-
 html {
   height: 100%;
 }
@@ -19,8 +17,67 @@ body {
   padding: 0;
 }
 
+body.town {
+  background-image: url('../img/stars_borderless.png');
+  min-height: 100%;
+  padding: 0;
+}
+
 .border-top {
   border-top: 0px solid #dee2e6!important;
+}
+
+/*----------------------------*\
+	     town-page
+\*----------------------------*/
+
+.layout.basic>* {
+  position: absolute;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -400px 0 0 -400px;
+}
+
+.town-view {
+    background-image: url('../img/backgrounds/castle.bmp');
+    width: 800px;
+    height: 324px;
+    top: 5px;
+}
+
+.button-panel {
+    background-image: url('../img/background.png');
+    width: 800px;
+    height: 210px;
+    top: 343px;
+}
+
+.border-town {
+    background-image: url('../img/panel/borrder.png');
+    width: 800px;
+    height: 580px;
+}
+
+.empty-button {
+    background-image: url('../img/panel/empty-button.png');
+    width: 40px;
+    height: 40px;
+}
+
+.empty-army {
+    background-image: url('../img/panel/empty-army.png');
+    width: 73px;
+    height: 87px;
+}
+
+.empty-hero {
+    background-image: url('../img/panel/empty-hero.png');
+    width: 61px;
+    height: 67px;
 }
 
 /*----------------------------*\
@@ -67,6 +124,33 @@ body {
 }
 
 /*----------------------------*\
+	     Resources panel
+\*----------------------------*/
+.resources-gold {
+  background-image: url('../img/panel/gold.png');
+  width: 18px;
+  height: 17px;
+}
+
+.resources-wood {
+  background-image: url('../img/panel/wood.png');
+  width: 16px;
+  height: 18px;
+}
+
+.resources-stone {
+  background-image: url('../img/panel/stone.png');
+  width: 18px;
+  height: 17px;
+}
+
+.resources-text {
+  left: 30px;
+  font-size: 14px;
+  color: #32f31b;
+}
+
+/*----------------------------*\
 	     Signup
 \*----------------------------*/
 
@@ -90,6 +174,10 @@ body {
     width: 150px;
     height: 71px;
     top: 50px;
+}
+
+.signup-errors {
+  color: #fff;
 }
 
 /*----------------------------*\

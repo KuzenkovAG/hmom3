@@ -10,17 +10,18 @@ from django.contrib.auth.views import (
     PasswordResetCompleteView,
 )
 from . import views
+from core.decorators import for_not_authorized
 
 app_name = 'users'
 
 urlpatterns = [
     path('signup/',
-         views.UserCreationView.as_view(),
+         for_not_authorized(views.UserCreationView.as_view()),
          name='signup'),
-    path('login/',
-         LoginView.as_view(
+    path('',
+         for_not_authorized(LoginView.as_view(
             template_name='users/login.html',
-         ),
+         )),
          name='login'),
     path('logout/',
          LogoutView.as_view(

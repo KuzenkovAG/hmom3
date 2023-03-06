@@ -13,6 +13,5 @@ class TownView(TemplateView):
         user = get_object_or_404(User, id=self.request.user.id)
         context['resources'] = user.resource.all()
 
-        buildings = user.buildingscomplete.all()
-        costs = buildings.cost.all()
+        buildings = user.buildingscompleted.all()
         return context

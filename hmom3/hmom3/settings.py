@@ -21,6 +21,9 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'www.momonline.pythonanywhere.com',
     'momonline.pythonanywhere.com',
+    '127.0.0.1:8000',
+    '127.0.0.1',
+    'localhost',
 ]
 
 

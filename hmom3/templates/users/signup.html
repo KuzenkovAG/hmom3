@@ -51,7 +51,6 @@
         imageNo = (imageNo + idx)
         if (imageNo>ImageSources.length -1) {imageNo=0}
         if (imageNo<0) {imageNo=ImageSources.length -1}
-        console.log(imageNo)
         document.getElementById('imgid').src = ImageSources[imageNo];
         document.getElementById("fraction-header").innerHTML = Header[imageNo];
         document.getElementById("fraction-description").innerHTML = Description[imageNo];

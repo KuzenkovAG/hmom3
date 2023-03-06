@@ -1,4 +1,5 @@
 from django import template
+from django.template.defaultfilters import floatformat
 
 register = template.Library()
 
@@ -11,4 +12,17 @@ def addclass(field, css):
 
 @register.filter(name='times')
 def times(number):
+    """For cycle."""
     return range(number)
+
+
+@register.filter(name='my_float')
+def my_float(float_number):
+    """Float format with '.' separator."""
+    return floatformat(float_number, arg=-1).replace(',', '.')
+
+
+@register.filter(name='round_down')
+def round_down(number):
+    """Round number down."""
+    return int(number)

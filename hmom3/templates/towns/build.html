@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load user_filters %}
+{% load static %}
+{% load l10n %}
+{% block title %}Город{% endblock %}
+{% block content %}
+
+
+<div class="centered layout basic" style="zoom: 1.1">
+  <div class="build-view layout basic">
+    <div class="build-list layout basic scroll-block">
+      {% for b in user_build %}
+      <div class="build-box layout basic" style="top: {% widthratio forloop.counter0|split_half 1 120 %}px;{% if forloop.counter0|is_even %}left: 0px;{% else %}left: 370px;{% endif %}">
+        <div class="build-image" style="background-image:
+      url({% get_static_prefix %}img/build-icons/{{ b.slug }}{{ b.get_index }}.bmp);"
+        >
+        </div>
+        <div class="build-price">
+          {% if b.building.gold %}
+          Золото {{ b.building.gold }}
+          {% endif %}
+          {% if b.building.wood %}
+          Дерево {{ b.building.wood }}
+          {% endif %}
+          {% if b.building.stone %}
+          Камень {{ b.building.stone }}
+          {% endif %}
+        </div>
+        <div class="build-header">
+          {{ b.building.name }} {{ b.level|add:1 }}ур.
+        </div>
+        <div class="build-description scroll-block">
+          {{ b.building.description }}
+        </div>
+        {% if b == build_in_process.building %}
+        <div class="build-processed layout basic">
+          Идет строительство: {% include 'towns/includes/timer.html' %}
+        </div>
+        {% else %}
+        {% if b.user_building.all %}
+        <div class="build-requirements">
+          Требуется:
+          {% for requirement in b.user_building.all %}
+          {% if forloop.first %}
+          {{ requirement.requirement.name }} {{ requirement.level }}ур.
+          {% else %}
+          , {{ requirement.requirement.name }} {{ requirement.level }}ур.
+          {% endif %}
+          {% endfor %}
+        </div>
+        {% else %}
+        <div class="build-cost layout basic">
+          {% if b.gold %}
+          <div class="resources-gold layout basic">
+            <div class="resources-text">{{ b.gold }}</div>
+          </div>
+          {% endif %}
+          {% if b.wood %}
+          <div class="resources-wood layout basic" style="left: 100px;">
+            <div class="resources-text">{{ b.wood }}</div>
+          </div>
+          {% endif %}
+          {% if b.stone %}
+          <div class="resources-stone layout basic" style="left: 200px;">
+            <div class="resources-text">{{ b.stone }}</div>
+          </div>
+          {% endif %}
+        </div>
+        {% if not build_in_process %}
+        <a class="build-button" href="{% url 'towns:construct_build' b.building.type.name %}">
+          <button class="build-button" title="Построить">
+            {{ b.building_time|time_format }}
+          </button>
+        </a>
+        {% endif %}
+        {% endif %}
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% include 'towns/includes/button-panel.html' %}
+  {% include 'towns/includes/borders.html' %}
+  {% include 'towns/includes/resourses.html' %}
+</div>
+{% endblock %}
+

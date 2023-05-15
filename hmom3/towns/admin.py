@@ -3,10 +3,12 @@ from . import models
 
 
 class FractionAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'name', 'bonus', 'description', 'image')
+    """Edit Fractions."""
+    list_display = ('pk', 'name', 'slug', 'bonus', 'description', 'image')
 
 
 class ResourcesAdmin(admin.ModelAdmin):
+    """Edit Resources what user have."""
     list_display = (
         'user',
         'gold_amount',
@@ -17,34 +19,44 @@ class ResourcesAdmin(admin.ModelAdmin):
 
 
 class BuildingsAdmin(admin.ModelAdmin):
+    """Edit valuables buildings."""
+    list_display = ('name', 'type', 'fraction', 'description',)
+
+
+class BuildingsTypeAdmin(admin.ModelAdmin):
+    """Edit type of buildings."""
     list_display = (
         'name',
-        'fraction',
-        'image',
-        'top',
-        'left'
+        'order',
+        'base_time',
+        'base_gold',
+        'base_wood',
+        'base_stone'
     )
 
 
-class BuildingsCostAdmin(admin.ModelAdmin):
+class UserBuildAdmin(admin.ModelAdmin):
+    """Edit buildings wat user made."""
     list_display = (
+        'user',
         'building',
+        'level',
+        'building_time',
         'gold',
         'wood',
         'stone',
     )
 
 
-class BuildingsCompletedAdmin(admin.ModelAdmin):
-    list_display = (
-        'user',
-        'building',
-        'level',
-    )
+class BuildingInProcessAdmin(admin.ModelAdmin):
+    """Edit buildings wat user made."""
+    list_display = ('user', 'building', 'finish_date')
 
 
-admin.site.register(models.Fractions, FractionAdmin)
-admin.site.register(models.Resources, ResourcesAdmin)
-admin.site.register(models.Buildings, BuildingsAdmin)
-admin.site.register(models.BuildingsCost, BuildingsCostAdmin)
-admin.site.register(models.BuildingsCompleted, BuildingsCompletedAdmin)
+admin.site.register(models.Fraction, FractionAdmin)
+admin.site.register(models.Resource, ResourcesAdmin)
+admin.site.register(models.Building, BuildingsAdmin)
+admin.site.register(models.BuildingType, BuildingsTypeAdmin)
+admin.site.register(models.UserBuilding, UserBuildAdmin)
+admin.site.register(models.BuildingRequirement)
+admin.site.register(models.BuildingInProcess, BuildingInProcessAdmin)

@@ -6,6 +6,12 @@
 	  Common
 \*----------------------------*/
 
+/*----layout---*/
+.layout.basic>* {
+  position: absolute;
+}
+
+/*----selectable---*/
 .selectable {
 }
 
@@ -16,6 +22,32 @@
 .selectable:active {
     filter: brightness(0.7);
 }
+
+/*----scrollbar---*/
+.scroll-block {
+  overflow: auto;
+}
+
+.scroll-block::-webkit-scrollbar {
+  width: 10px;
+}
+
+.scroll-block::-webkit-scrollbar-track {
+  -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+  background-color: #f9f9fd;
+}
+
+.scroll-block::-webkit-scrollbar-thumb {
+  background-color: #f2bf93;
+  background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, .25) 25%,
+                    transparent 25%,
+                    transparent 50%,
+                    rgba(255, 255, 255, .25) 50%,
+                    rgba(255, 255, 255, .25) 75%,
+                    transparent 75%,
+                    transparent);
+}
+
 /*----------------------------*\
 	        Body
 \*----------------------------*/
@@ -40,13 +72,11 @@ body.town {
   border-top: 0px solid #dee2e6!important;
 }
 
+
+
 /*----------------------------*\
 	     town-page
 \*----------------------------*/
-
-.layout.basic>* {
-  position: absolute;
-}
 
 .centered {
     position: absolute;
@@ -56,18 +86,36 @@ body.town {
 }
 
 .town-view {
-    background-image: url('../img/backgrounds/castle.bmp');
     width: 800px;
-    height: 324px;
+    height: 374px;
     top: 5px;
+    left: 1px;
+}
+
+.build-view {
+    background-image: url('../img/background.png');
+    width: 800px;
+    height: 460px;
+    top: 5px;
+    left: 1px;
+}
+
+.building {
+}
+
+.button-army-panel {
+    background-image: url('../img/background.png');
+    width: 800px;
+    height: 180px;
+    top: 380px;
     left: 1px;
 }
 
 .button-panel {
     background-image: url('../img/background.png');
     width: 800px;
-    height: 210px;
-    top: 343px;
+    height: 100px;
+    top: 470px;
     left: 1px;
 }
 
@@ -75,6 +123,7 @@ body.town {
     background-image: url('../img/panel/empty-button.png');
     width: 40px;
     height: 40px;
+    z-index: 110;
 }
 
 .empty-army {
@@ -91,12 +140,89 @@ body.town {
 
 
 /*----------------------------*\
+	  Build page
+\*----------------------------*/
+
+.build-list {
+  top: 20px;
+  left: 20px;
+  width: 750px;
+  height: 430px;
+}
+
+.build-box {
+  background: url('../img/panel/build-box.png');
+  width: 360px;
+  height: 110px;
+  color: #ffd800;
+  font-size: 14px;
+}
+
+.build-image {
+  width: 58px;
+  height: 64px;
+  top: 3px;
+  left: 3px;
+}
+
+.build-header {
+  top: 1px;
+  left: 64px;
+  font-weight: bold;
+}
+
+.build-description {
+  top: 19px;
+  left: 64px;
+}
+
+.build-requirements {
+  top: 65px;
+  left: 3px;
+  width: 350px;
+  height: 45px;
+  color: #ff0000;
+}
+
+.build-processed {
+  top: 65px;
+  left: 3px;
+  width: 350px;
+  height: 45px;
+  color: #ffd800;
+}
+
+.build-button {
+  background: url('../img/panel/build-button.png');
+  width: 80px;
+  height: 30px;
+  top: 73px;
+  left: 270px;
+  color: #ffd800    ;
+}
+
+.build-cost  {
+  top: 78px;
+  left: 3px;
+}
+
+.build-cost-text {
+  font: 12px;
+  color: #ff0000;
+}
+
+
+/*----------------------------*\
 	  Panel buttons
 \*----------------------------*/
 
 .button-icon {
   width: 38px;
   height: 38px;
+}
+
+.b-town {
+  background: url('../img/panel/buttons.png') -192px -42px;
 }
 
 .b-army {
@@ -139,6 +265,10 @@ body.town {
   background: url('../img/panel/buttons.png') 0px -42px;
 }
 
+.b-stats {
+  background: url('../img/panel/buttons.png') -192px 0px;
+}
+
 
 /*----------------------------*\
 	  Borders Town Page
@@ -166,8 +296,8 @@ body.town {
   background-image: url('../img/panel/border-cross.png');
   width: 799px;
   height: 14px;
-  top: 329px;
-  left: 1px;
+  top: -5px;
+  left: 0px;
 }
 .border-bot {
   background-image: url('../img/panel/border-bot.png');
@@ -211,6 +341,12 @@ body.town {
 /*----------------------------*\
 	     Resources panel
 \*----------------------------*/
+.resources {
+  top: 554px;
+  left: 260px;
+  z-index: 100;
+}
+
 .resources-gold {
   background-image: url('../img/panel/gold.png');
   width: 18px;
@@ -230,7 +366,8 @@ body.town {
 }
 
 .resources-text {
-  left: 30px;
+  top: -3px;
+  left: 20px;
   font-size: 14px;
   color: #32f31b;
 }
@@ -278,6 +415,7 @@ body.town {
   color: #319324;
   font-weight: 700;
 }
+
 
 /*----------------------------*\
 	     Signup
@@ -330,7 +468,7 @@ body.town {
   transition: all 0.6s ease;
 }
 
-/* Стили кнопки */
+
 .btn-secondary {
   display: inline-block;
   cursor: pointer;
@@ -371,4 +509,34 @@ body.town {
 \*----------------------------*/
 .form-login {
   width: 300px;
+}
+
+
+/*----------------------------*\
+	     Timer
+\*----------------------------*/
+
+.timer-items {
+  top: 00px;
+  left: 210px;
+}
+
+#timer-hours {
+  left: 20px;
+}
+
+#timer-hours::after {
+  content: ':';
+}
+
+#timer-minutes {
+  left: 40px;
+}
+
+#timer-minutes::after {
+  content: ':';
+}
+
+#timer-seconds {
+  left: 60px;
 }

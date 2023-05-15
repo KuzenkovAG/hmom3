@@ -1,119 +1,28 @@
-{% extends "base_town.html" %}
+{% extends "base.html" %}
 {% load user_filters %}
 {% load static %}
 {% load l10n %}
 {% block title %}Город{% endblock %}
 {% block content %}
 
-
-<div class="town-view layout basic">
-</div>
-
-<div class="button-panel layout basic">
-  <div class="buttons-set layout basic" style="top: 20px; left: 20px;">
-    <div class="empty-button selectable" style="left: 0px;">
-      <div class="button-icon b-build" title="Постройки"></div>
+<div class="centered layout basic" style="zoom: 1.1">
+  <div class="town-view layout basic" style="background-image:
+  url({% get_static_prefix %}img/backgrounds/{{ user.fraction.slug }}.bmp);">
+    {% for b in buildings %}
+    {% if b.level != 0 %}
+    <div class="building selectable {{ b.slug }}{{ b.get_index }}" style="background-image:
+  url({% get_static_prefix %}img/buildings/{{ b.slug }}{{ b.get_index }}.png);">
     </div>
-    <div class="empty-button selectable" style="left: 50px;">
-      <div class="button-icon b-search" title="Исследования"></div>
-    </div>
-    <div class="empty-button selectable" style="left: 100px;">
-      <div class="button-icon b-army" title="Тренировка армии"></div>
-    </div>
-    <div class="empty-button selectable" style="left: 150px;">
-      <div class="button-icon b-map" title="Карта"></div>
-    </div>
-    <div class="empty-button selectable" style="left: 200px;">
-      <div class="button-icon b-campaign" title="Походы"></div>
-    </div>
-    <div class="empty-button selectable" style="left: 570px;">
-      <div class="button-icon" title="Статистика"></div>
-    </div>
-    <div class="empty-button selectable" style="left: 620px;">
-      <div class="button-icon b-setting" title="Настройки"></div>
-    </div>
-    <div class="empty-button selectable" style="left: 670px;">
-      <div class="button-icon b-message" title="Сообщения"></div>
-    </div>
-    <div class="empty-button selectable" style="left: 720px;">
-      <a href="{% url 'users:logout' %}">
-        <div class="button-icon b-logout" title="Выход"></div>
-      </a>
-    </div>
-  </div>
-  <div class="army-panel layout basic" style="top: 100px; left: 82px;">
-    <div class="empty-hero selectable">
-    </div>
-    {% for slot in 7|times %}
-    <div class="empty-army selectable slot{{ slot|add:1 }}" style="left:
-    {% widthratio slot|add:1 1 80 %}px;" id="slot{{ slot|add:1 }}">
-    </div>
+    {% endif %}
     {% endfor %}
   </div>
-  <div class="resources layout basic" style="top: 212px; left: 260px; z-index: 100; ">
-    <div style="hidden">
-      {{ resources.0.update_data }}
-    </div>
-    <div class="resources-gold layout basic">
-      <div class="resources-text" id="gold-text">
-        {{ resources.0.gold_amount|round_down }}
-      </div>
-    </div>
-    <div class="resources-wood layout basic" style="left: 100px;">
-      <div class="resources-text" id="wood-text">
-        {{ resources.0.wood_amount|round_down }}
-      </div>
-    </div>
-    <div class="resources-stone layout basic" style="left: 200px;">
-      <div class="resources-text" id="stone-text">
-        {{ resources.0.stone_amount|round_down }}
-      </div>
-    </div>
-  </div>
+  {% include 'towns/includes/button-army-panel.html' %}
+  {% include 'towns/includes/borders.html' %}
+  {% include 'towns/includes/resourses.html' %}
 </div>
 
-<div class="borders layout basic">
-  <div class="border-top">
-  </div>
-  <div class="border-left">
-  </div>
-  <div class="border-right">
-  </div>
-  <div class="border-cross">
-  </div>
-  <div class="border-bot">
-  </div>
-  <div class="deco-top-left">
-  </div>
-  <div class="deco-top-right">
-  </div>
-  <div class="deco-bot-left">
-  </div>
-  <div class="deco-bot-right">
-  </div>
-</div>
 
-<script>
-var gold = {{ resources.0.gold_amount|my_float }};
-var stone = {{ resources.0.stone_amount|my_float }};
-var wood = {{ resources.0.wood_amount|my_float }};
 
-var gold_income = {{ resources.0.gold_income }};
-var stone_income = {{ resources.0.stone_income }};
-var wood_income = {{ resources.0.wood_income }};
-var timer = 5000
-
-setInterval(function() {
-  gold = gold + gold_income/3600*timer/1000
-  stone = stone + stone_income/3600*timer/1000
-  wood = wood + wood_income/3600*timer/1000
-
-  document.getElementById("gold-text").innerHTML = Math.floor(gold, 0);
-  document.getElementById("wood-text").innerHTML = Math.floor(wood, 0);
-  document.getElementById("stone-text").innerHTML = Math.floor(stone, 0);
-
-}, timer);
-</script>
 
 {% endblock %}
 

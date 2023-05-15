@@ -1,0 +1,251 @@
+/*----------------------------*\
+	  Buildings Castle
+\*----------------------------*/
+
+.c-tavern {
+  top: 230px;
+  left: 0px;
+  width: 105px;
+  height: 144px;
+  z-index: 10;
+}
+
+.c-hall0 {
+  top: 220px;
+  left: 20px;
+  width: 216px;
+  height: 129px;
+  z-index: 9;
+}
+
+.c-hall1 {
+  top: 180px;
+  left: 20px;
+  width: 216px;
+  height: 171px;
+  z-index: 9;
+}
+
+.c-hall2 {
+  top: 170px;
+  left: 20px;
+  width: 216px;
+  height: 183px;
+  z-index: 9;
+}
+
+.c-hall3 {
+  top: 165px;
+  left: 20px;
+  width: 216px;
+  height: 193px;
+  z-index: 9;
+}
+
+.c-castle0 {
+  top: 75px;
+  left: 590px;
+  width: 205px;
+  height: 124px;
+}
+
+.c-castle1 {
+  top: 56px;
+  left: 400px;
+  width: 267px;
+  height: 150px;
+  zoom: 1.2;
+}
+
+.c-castle2 {
+  top: 32px;
+  left: 400px;
+  width: 267px;
+  height: 173px;
+  zoom: 1.2;
+}
+
+.c-market {
+  top: 266px;
+  left: 420px;
+  width: 268px;
+  height: 101px;
+}
+
+.c-blak {
+  top: 250px;
+  left: 210px;
+  width: 154px;
+  height: 124px;
+  z-index: 9;
+}
+
+.c-sild {
+  top: 229px;
+  left: 489px;
+  width: 42px;
+  height: 75px;
+}
+
+.c-holy {
+  top: 109px;
+  left: 454px;
+  width: 60px;
+  height: 89px;
+}
+
+.c-spec {
+  top: 75px;
+  left: 530px;
+  width: 96px;
+  height: 116px;
+}
+
+.c-shipyard {
+  top: 134px;
+  left: 480px;
+  width: 107px;
+  height: 102px;
+}
+
+.c-ext1 {
+  top: 190px;
+  left: 385px;
+  width: 120px;
+  height: 58px;
+}
+
+.c-ext3 {
+  top: 120px;
+  left: 48px;
+  width: 24px;
+  height: 37px;
+}
+
+.c-mage0 {
+  top: 165px;
+  left: 708px;
+  width: 93px;
+  height: 103px;
+}
+
+.c-mage1 {
+  top: 134px;
+  left: 707px;
+  width: 93px;
+  height: 134px;
+}
+
+.c-mage2 {
+  top: 106px;
+  left: 705px;
+  width: 95px;
+  height: 162px;
+}
+
+.c-mage3 {
+  top: 75px;
+  left: 704px;
+  width: 96px;
+  height: 193px;
+}
+
+.c-army-1 {
+  top: 93px;
+  left: 307px;
+  width: 60px;
+  height: 84px;
+}
+
+.c-army-1u {
+  top: 64px;
+  left: 304px;
+  width: 64px;
+  height: 111px;
+}
+
+.c-army-2 {
+  top: 130px;
+  left: 360px;
+  width: 110px;
+  height: 56px;
+}
+
+.c-army-2u {
+  top: 115px;
+  left: 358px;
+  width: 113px;
+  height: 71px;
+}
+
+.c-army-3 {
+  top: 60px;
+  left: 75px;
+  width: 100px;
+  height: 121px;
+}
+
+.c-army-3u {
+  top: 35px;
+  left: 76px;
+  width: 99px;
+  height: 143px;
+}
+
+.c-army-4 {
+  top: 100px;
+  left: 175px;
+  width: 142px;
+  height: 64px;
+}
+
+.c-army-4u {
+  top: 84px;
+  left: 176px;
+  width: 143px;
+  height: 80px;
+}
+
+.c-army-5 {
+  top: 210px;
+  left: 565px;
+  width: 138px;
+  height: 49px;
+}
+
+.c-army-5u {
+  top: 172px;
+  left: 565px;
+  width: 138px;
+  height: 87px;
+}
+
+.c-army-6 {
+  top: 200px;
+  left: 180px;
+  width: 268px;
+  height: 100px;
+  z-index: 8;
+}
+
+.c-army-6u {
+  top: 200px;
+  left: 180px;
+  width: 267px;
+  height: 96px;
+  z-index: 8;
+}
+
+.c-army-7 {
+  top: 10px;
+  left: 370px;
+  width: 191px;
+  height: 98px;
+}
+
+.c-army-7u {
+  top: 10px;
+  left: 370px;
+  width: 181px;
+  height: 88px;
+}

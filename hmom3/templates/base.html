@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  {% include 'includes/load_styles.html' %}
+  <title>
+    {% block title %}
+    {% endblock %}
+  </title>
+</head>
+<body {% if "town" in request.path %}class="town"{% endif %}>
+<main>
+  {% block content %}
+  {% endblock %}
+</main>
+
+</body>
+</html>

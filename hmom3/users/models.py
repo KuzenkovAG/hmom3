@@ -10,11 +10,12 @@ class User(AbstractUser):
         error_messages={'unique': "A email already exists."},
     )
     fraction = models.ForeignKey(
-        'towns.Fractions',
-        on_delete=models.SET_DEFAULT,
-        related_name='fractions',
+        'towns.Fraction',
+        on_delete=models.SET_NULL,
+        related_name='user_fraction',
         verbose_name='Фракция',
         default=1,
+        null=True,
     )
 
     REQUIRED_FIELDS = ['email']

@@ -6,10 +6,13 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', include('users.urls', namespace='users')),
     path('town/', include('towns.urls', namespace='towns')),
-    path('admin/', admin.site.urls),
+    path('management/', admin.site.urls),
 ]
 
 if settings.DEBUG:
+    import debug_toolbar
+
+    urlpatterns += (path('__debug__/', include(debug_toolbar.urls)),)
     urlpatterns += static(
         settings.STATIC_URL, document_root=settings.STATIC_ROOT
     )

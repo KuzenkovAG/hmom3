@@ -1,0 +1,17 @@
+{% load user_filters %}
+
+<div class="button-army-panel layout basic">
+
+  {% include 'towns/includes/bottom_buttons.html' %}
+
+  <div class="army-panel layout basic" style="top: 75px; left: 82px;">
+    <div class="empty-hero selectable">
+    </div>
+    {% for slot in 7|times %}
+    <div class="empty-army selectable slot{{ slot|add:1 }}" style="left:
+    {% widthratio slot|add:1 1 80 %}px;" id="slot{{ slot|add:1 }}">
+    </div>
+    {% endfor %}
+  </div>
+</div>
+

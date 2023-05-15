@@ -13,7 +13,7 @@ ADDITIONAL_USER_FIELDS = (
 
 @admin.register(User)
 class MyUserAdmin(UserAdmin):
-
+    """Extend User Admin."""
     list_display = ('pk', 'email', 'username', 'last_login', 'fraction')
     add_fieldsets = UserAdmin.add_fieldsets + ADDITIONAL_USER_FIELDS
     fieldsets = UserAdmin.fieldsets + ADDITIONAL_USER_FIELDS

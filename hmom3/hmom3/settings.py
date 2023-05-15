@@ -16,7 +16,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '8%7@xv-(g3jiroyz153f*1of39)()6***%_$4$r76f82#f@e8r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'www.momonline.pythonanywhere.com',
@@ -28,7 +28,6 @@ ALLOWED_HOSTS = [
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -36,10 +35,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'towns.apps.TownsConfig',
     'users.apps.UsersConfig',
     'core.apps.CoreConfig',
-    'sorl.thumbnail',
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -52,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'hmom3.urls'
@@ -86,20 +86,20 @@ DATABASES = {
 
 
 # Password validation
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
+# AUTH_PASSWORD_VALIDATORS = [
+#     {
+#         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+#     },
+#     {
+#         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+#     },
+#     {
+#         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+#     },
+#     {
+#         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+#     },
+# ]
 
 
 # Internationalization
@@ -132,3 +132,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'towns:index'
 LOGOUT_REDIRECT_URL = 'users:login'
+
+# debug-toolbar
+def show_toolbar(request):
+    return True
+
+
+DEBUG_TOOLBAR_CONFIG = {
+    "SHOW_TOOLBAR_CALLBACK": show_toolbar,
+}

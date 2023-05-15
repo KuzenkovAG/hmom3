@@ -1,47 +1,47 @@
-{% extends "base_user.html" %}
+{% extends "base.html" %}
 {% load user_filters %}
 {% block title %}Войти{% endblock %}
 {% block content %}
+<div class="container d-flex justify-content-center">
+  <div class="login-page">
+    <div class="game-logo">
+      <div class="login-box">
+        <div align="center">
+          <h4>Вход</h4>
+          <form method="post"
+                {% if action_url %}
+                action="{% url action_url %}"
+                {% endif %}
+                enctype="multipart/form-data"
+          >
+            <table cellspacing="0" style="padding-top: 5px">
+              {% csrf_token %}
+              {% for field in form %}
+              <tr>
 
-<div class="login-page">
-  <div class="game-logo">
-    <div class="login-box">
-      <div align="center">
-        <h4>Вход</h4>
-        <form method="post"
-              {% if action_url %}
-              action="{% url action_url %}"
-              {% endif %}
-              enctype="multipart/form-data"
-        >
-          <table cellspacing="0" style="padding-top: 5px">
-            {% csrf_token %}
-            {% for field in form %}
-            <tr>
-
-              <th width="150px" style="text-align:right">
-                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-              </th>
-              <td>
-                {{ field|addclass:'form-login' }}
-              </td>
-            </tr>
-            {% endfor %}
-          </table>
-          {% if request.resolver_match.view_name == 'users:login' %}
-          <a href="{% url 'users:password_reset' %}">Забыли пароль?</a>
-          {% endif %}
-          <div style="width: 310px; padding-top:5px">
-            <a class="btn-secondary" href="{% url 'users:signup' %}" title="Регистрация">Регистрация</a>
-            <button type="submit" class="btn-primary">
-              Войти
-            </button>
-          </div>
-        </form>
+                <th width="150px" style="text-align:right">
+                  <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                </th>
+                <td>
+                  {{ field|addclass:'form-login' }}
+                </td>
+              </tr>
+              {% endfor %}
+            </table>
+            {% if request.resolver_match.view_name == 'users:login' %}
+            <a href="{% url 'users:password_reset' %}">Забыли пароль?</a>
+            {% endif %}
+            <div style="width: 310px; padding-top:5px">
+              <a class="btn-secondary" href="{% url 'users:signup' %}" title="Регистрация">Регистрация</a>
+              <button type="submit" class="btn-primary">
+                Войти
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
 
 {% endblock %}

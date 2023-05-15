@@ -1,0 +1,42 @@
+{% load user_filters %}
+
+<div class="resources layout basic">
+  <div class="resources-gold layout basic">
+    <div class="resources-text" id="gold-text">
+      {{ resources.gold_amount|round_down }}
+    </div>
+  </div>
+  <div class="resources-wood layout basic" style="left: 100px;">
+    <div class="resources-text" id="wood-text">
+      {{ resources.wood_amount|round_down }}
+    </div>
+  </div>
+  <div class="resources-stone layout basic" style="left: 200px;">
+    <div class="resources-text" id="stone-text">
+      {{ resources.stone_amount|round_down }}
+    </div>
+  </div>
+</div>
+
+
+<script>
+var gold = {{ resources.gold_amount|my_float }};
+var stone = {{ resources.stone_amount|my_float }};
+var wood = {{ resources.wood_amount|my_float }};
+
+var gold_income = {{ resources.gold_income }};
+var stone_income = {{ resources.stone_income }};
+var wood_income = {{ resources.wood_income }};
+var timer = 5000
+
+setInterval(function() {
+  gold = gold + gold_income/3600*timer/1000
+  stone = stone + stone_income/3600*timer/1000
+  wood = wood + wood_income/3600*timer/1000
+
+  document.getElementById("gold-text").innerHTML = Math.floor(gold, 0);
+  document.getElementById("wood-text").innerHTML = Math.floor(wood, 0);
+  document.getElementById("stone-text").innerHTML = Math.floor(stone, 0);
+
+}, timer);
+</script>

@@ -1,7 +1,7 @@
 # hmom3 Online game v.0.1.0
 
 
-## Features:
+## Features
 - Can select your favorite fraction;
 - Make buildings;
 - Store resources.
@@ -11,6 +11,11 @@
 ## History
 v.0.1.0 - Create ability to make buildings
 
+
+## Future plan
+- Add new fraction;
+- Add ability to create Army;
+- Add page for statistics.
 
 ## Installation (windows)
 1. Clone repository

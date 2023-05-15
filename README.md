@@ -1,5 +1,10 @@
 # hmom3 Online game v.0.1.0
 
+**Is under developing**
+
+## Deploy on server
+[deploy] <- last working version
+
 
 ## Features
 - Can select your favorite fraction;
@@ -56,3 +61,5 @@ python hmom3/manage.py create-superuser \
 ```sh
 python yatube/manage.py runserver
 ```
+
+   [deploy]: <http://momonline.pythonanywhere.com/>

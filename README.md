@@ -60,6 +60,7 @@ python hmom3/manage.py create-superuser \
 --password=admin
 ```
 8. Run server
+Before run make sure settings.DEBAG = True
 ```sh
 python hmom3/manage.py runserver
 ```

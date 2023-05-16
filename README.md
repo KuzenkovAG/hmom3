@@ -59,7 +59,7 @@ python hmom3/manage.py create-superuser \
 ```
 8. Run server
 ```sh
-python yatube/manage.py runserver
+python hmom3/manage.py runserver
 ```
 
    [deploy]: <http://momonline.pythonanywhere.com/>

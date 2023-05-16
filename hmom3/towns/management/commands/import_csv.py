@@ -27,7 +27,6 @@ class Command(BaseCommand):
         ]
 
         for model, file in files:
-            print(file)
             object_model = model.objects.all()
             object_model.delete()
             data = []

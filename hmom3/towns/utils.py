@@ -37,5 +37,5 @@ def get_building_in_process(user):
         'building').filter(user=user)
     exists = building_in_process.exists()
     if exists and building_in_process[0].is_finished():
-        _create_building(building_in_process[0], user)
+        return _create_building(building_in_process[0], user)
     return building_in_process[0] if exists else None

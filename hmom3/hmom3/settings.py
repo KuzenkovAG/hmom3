@@ -133,6 +133,7 @@ LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'towns:index'
 LOGOUT_REDIRECT_URL = 'users:login'
 
+
 # debug-toolbar
 def show_toolbar(request):
     return DEBUG

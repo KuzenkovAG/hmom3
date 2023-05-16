@@ -1,6 +1,7 @@
 import csv
 import datetime as dt
 
+from django.conf import settings
 from django.core.management.base import BaseCommand
 
 from towns import models
@@ -10,17 +11,23 @@ class Command(BaseCommand):
     help = "Fill DB for major data."
 
     def handle(self, *args, **options):
+        if settings.DEBUG:
+            static = settings.STATICFILES_DIRS[0]
+        else:
+            static = settings.STATIC_ROOT
+
         files = [
-            (models.Fraction, r'hmom3/static/data/fractions.csv'),
-            (models.BuildingType, r'hmom3/static/data/buildings_type.csv'),
-            (models.Building, r'hmom3/static/data/buildings.csv'),
+            (models.Fraction, f'{static}/data/fractions.csv'),
+            (models.BuildingType, f'{static}/data/buildings_type.csv'),
+            (models.Building, f'{static}/data/buildings.csv'),
             (
                 models.BuildingRequirement,
-                r'hmom3/static/data/building_requirements.csv'
+                f'{static}/data/building_requirements.csv'
             ),
         ]
 
         for model, file in files:
+            print(file)
             object_model = model.objects.all()
             object_model.delete()
             data = []

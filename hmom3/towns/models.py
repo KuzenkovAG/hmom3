@@ -43,12 +43,12 @@ class Resource(models.Model):
         verbose_name='Ресурсы',
         related_name='resource',
     )
-    gold_amount = models.FloatField(default=100)
-    wood_amount = models.FloatField(default=2)
-    stone_amount = models.FloatField(default=2)
-    gold_income = models.IntegerField(default=10)
-    wood_income = models.IntegerField(default=1)
-    stone_income = models.IntegerField(default=1)
+    gold_amount = models.FloatField(default=1000)
+    wood_amount = models.FloatField(default=25)
+    stone_amount = models.FloatField(default=25)
+    gold_income = models.IntegerField(default=100)
+    wood_income = models.IntegerField(default=5)
+    stone_income = models.IntegerField(default=5)
     updated_time = models.DateTimeField(auto_now_add=True)
 
     class Meta:

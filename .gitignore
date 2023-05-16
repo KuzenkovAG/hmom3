@@ -1,8 +1,8 @@
 /venv
 /.idea
-/__pycache__/
 __pycache__/
 
-/bup/
+bup/
+resurses_test/
 
 db.sqlite3

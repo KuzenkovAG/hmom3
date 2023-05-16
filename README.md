@@ -2,6 +2,8 @@
 
 **Is under developing**
 
+![alt text](preview/preview.png?raw=true)
+
 ## Deploy on server
 [deploy] <- last working version
 
@@ -63,3 +65,4 @@ python hmom3/manage.py runserver
 ```
 
    [deploy]: <http://momonline.pythonanywhere.com/>
+   

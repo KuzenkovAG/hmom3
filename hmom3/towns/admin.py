@@ -16,16 +16,20 @@ class ResourcesAdmin(admin.ModelAdmin):
         'stone_amount',
         'updated_time'
     )
+    list_filter = ("user__username",)
+    search_fields = ("user__username",)
+    list_editable = ('gold_amount', 'wood_amount', 'stone_amount')
 
 
 class BuildingsAdmin(admin.ModelAdmin):
     """Edit valuables buildings."""
-    list_display = ('name', 'type', 'fraction', 'description',)
+    list_display = ('id', 'name', 'type', 'fraction', 'description',)
 
 
 class BuildingsTypeAdmin(admin.ModelAdmin):
     """Edit type of buildings."""
     list_display = (
+        'id',
         'name',
         'order',
         'base_time',
@@ -45,12 +49,17 @@ class UserBuildAdmin(admin.ModelAdmin):
         'gold',
         'wood',
         'stone',
+        'slug'
     )
+    list_filter = ("user__username",)
+    search_fields = ("user__username",)
+    list_editable = ('level', 'slug')
 
 
 class BuildingInProcessAdmin(admin.ModelAdmin):
     """Edit buildings wat user made."""
     list_display = ('user', 'building', 'finish_date')
+    search_fields = ("user__username",)
 
 
 admin.site.register(models.Fraction, FractionAdmin)

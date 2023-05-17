@@ -16,8 +16,8 @@ class Command(BaseCommand):
             static = settings.STATIC_ROOT
 
         files = [
-            (models.Building, f'{static}/data/patch_buildings.csv'),
             (models.Fraction, f'{static}/data/patch_fraction.csv'),
+            (models.Building, f'{static}/data/patch_buildings.csv'),
             (
                 models.BuildingRequirement,
                 f'{static}/data/patch_building_requirements.csv'

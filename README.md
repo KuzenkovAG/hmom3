@@ -1,4 +1,4 @@
-# hmom3 Online game v.0.1.0
+# hmom3 Online game v.0.2.0
 
 **Is under developing**
 
@@ -16,12 +16,13 @@
 
 
 ## History
+v.0.2.0 - Add Inferno fraction
 v.0.1.0 - Create ability to make buildings
 
 
 ## Future plan
-- Add new fraction;
 - Add ability to create Army;
+- Apply logic to increase gold amount;
 - Add page for statistics.
 
 ## Installation (windows)

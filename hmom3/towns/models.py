@@ -45,9 +45,12 @@ class Resource(models.Model):
     wood_amount = models.FloatField(default=25)
     stone_amount = models.FloatField(default=25)
     gold_income = models.IntegerField(default=100)
-    wood_income = models.IntegerField(default=5)
-    stone_income = models.IntegerField(default=5)
+    wood_income = models.IntegerField(default=3)
+    stone_income = models.IntegerField(default=3)
     updated_time = models.DateTimeField(auto_now_add=True)
+    gold_limit = models.BigIntegerField(default=10000)
+    wood_limit = models.BigIntegerField(default=1000)
+    stone_limit = models.BigIntegerField(default=1000)
 
     class Meta:
         verbose_name = 'Ресурсы'
@@ -60,8 +63,18 @@ class Resource(models.Model):
         self.gold_amount += sec_passed * self.gold_income / SEC_IN_HOUR
         self.wood_amount += sec_passed * self.wood_income / SEC_IN_HOUR
         self.stone_amount += sec_passed * self.stone_income / SEC_IN_HOUR
+
+        self._check_limits()
         self.updated_time = time_now_utc
         self.save()
+
+    def _check_limits(self):
+        if self.gold_amount > self.gold_limit:
+            self.gold_amount = self.gold_limit
+        if self.wood_amount > self.wood_limit:
+            self.wood_amount = self.wood_limit
+        if self.stone_amount > self.stone_limit:
+            self.stone_amount = self.stone_limit
 
 
 class BuildingType(models.Model):

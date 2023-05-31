@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load user_filters %}
+{% load static %}
+{% load l10n %}
+{% block title %}Город{% endblock %}
+{% block content %}
+
+
+<div class="centered layout basic" style="zoom: 1.1">
+  <div class="about-body layout basic">
+    <div class="about-text">
+      <a class="black-links" href="{% if user.is_authenticated %}{% url 'towns:index' %}
+      {% else %}{% url 'users:login' %}{% endif %}">
+        На главную
+      </a>
+      <h5>История изменений</h5>
+      <div class="about-history scroll-block">
+        <p>
+          <h6>v.0.3.0</h6>
+          Добавлена страница о доходах;<br>
+          Добавлено ограничение по количеству ресурсов;<br>
+          Добавлена страница о проекте.
+        </p>
+        <p>
+          <h6>v.0.2.0</h6>
+          Добавлена новая фракция Инферно
+        </p>
+        <p>
+          <h6>v.0.1.0</h6>
+          Добавлена возможность постройки здания
+        </p>
+      </div>
+      <b>Автор:</b>
+      <a class="black-links" href="https://github.com/KuzenkovAG" target="_blank">
+        Алексей Кузенков
+      </a><br>
+
+    </div>
+
+  </div>
+</div>
+
+
+{% endblock %}
+

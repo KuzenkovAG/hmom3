@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load user_filters %}
+{% load static %}
+{% load l10n %}
+{% block title %}Статистика{% endblock %}
+{% block content %}
+
+
+
+<div class="centered layout basic" style="zoom: 1.1">
+  <div class="build-view layout basic">
+    <div class="statistic-body">
+      <table class="statistics-table">
+        <tr>
+          <th colspan="4">Добыча ресурсов</th>
+        </tr>
+        <tr>
+          <th>Ресурс</th>
+          <th>В час</th>
+          <th>В сутки</th>
+          <th>Размер хранилищ</th>
+        </tr>
+        <tr>
+          <td>Золото</td>
+          {% if resources.gold_amount < resources.gold_limit %}
+          <td class="resources-text">+{{ resources.gold_income }}</td>
+          <td class="resources-text">+{% widthratio resources.gold_income 1 24 %}</td>
+          <td class="resources-text">{{ resources.gold_limit }}</td>
+          {% else %}
+          <td class="resources-limit">0</td>
+          <td class="resources-limit">0</td>
+          <td class="resources-limit">{{ resources.gold_limit }}</td>
+          {% endif %}
+        </tr>
+        <tr>
+          <td>Дерево</td>
+          {% if resources.wood_amount < resources.wood_limit %}
+          <td class="resources-text">+{{ resources.wood_income }}</td>
+          <td class="resources-text">+{% widthratio resources.wood_income 1 24 %}</td>
+          <td class="resources-text">{{ resources.wood_limit }}</td>
+          {% else %}
+          <td class="resources-limit">0</td>
+          <td class="resources-limit">0</td>
+          <td class="resources-limit">{{ resources.wood_limit }}</td>
+          {% endif %}
+        </tr>
+        <tr>
+          <td>Камень</td>
+          {% if resources.stone_amount < resources.stone_limit %}
+          <td class="resources-text">+{{ resources.stone_income }}</td>
+          <td class="resources-text">+{% widthratio resources.stone_income 1 24 %}</td>
+          <td class="resources-text">{{ resources.stone_limit }}</td>
+          {% else %}
+          <td class="resources-limit">0</td>
+          <td class="resources-limit">0</td>
+          <td class="resources-limit">{{ resources.stone_limit }}</td>
+          {% endif %}
+        </tr>
+      </table>
+
+    </div>
+  </div>
+  {% include 'towns/includes/button-panel.html' %}
+  {% include 'towns/includes/bottom-line-panel.html' %}
+</div>
+
+
+{% endblock %}
+

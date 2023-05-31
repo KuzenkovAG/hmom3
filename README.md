@@ -14,10 +14,15 @@
 - Store resources.
 
 
-
 ## History
-v.0.2.0 - Add Inferno fraction
-v.0.1.0 - Create ability to make buildings
++ *v.0.3.0*  
+Add limit to resources;  
+Add about page;  
+Add page of resources incoming;  
++ *v.0.2.0*  
+Add Inferno fraction;  
++ *v.0.1.0*  
+Create ability to make buildings;
 
 
 ## Future plan

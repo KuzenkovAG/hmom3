@@ -48,6 +48,8 @@
                     transparent);
 }
 
+
+
 /*----------------------------*\
 	        Body
 \*----------------------------*/
@@ -372,6 +374,48 @@ body.town {
   color: #32f31b;
 }
 
+.resources-limit {
+  top: -3px;
+  left: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #f50000;
+}
+
+/*-------------*\
+    Footer
+\*-------------*/
+
+.username {
+  color: #ffd800;
+  top: 553px;
+  left: 10px;
+  z-index: 100;
+  font-size: 13px;
+}
+
+.footer-about {
+  color: #ffd800;
+  top: 577px;
+  left: 720px;
+  z-index: 100;
+  font-size: 13px;
+  width: 70px;
+}
+
+.footer-about a {
+  text-decoration: none;
+  color: #ffd800;
+}
+
+.footer-version {
+  color: #ffd800;
+  top: 577px;
+  left: 10px;
+  z-index: 100;
+  font-size: 13px;
+  width: 70px;
+}
 
 /*----------------------------*\
 	     Login-page
@@ -392,15 +436,6 @@ body.town {
     padding-left: 6px;
     font-size: 16px;
     font-family: Bahnschrift Light;
-}
-
-.login-box a {
-  color: #000;
-}
-
-.login-box a:hover {
-  color: #fff;
-  transition: all 0.6s ease;
 }
 
 .fraction-box {
@@ -539,4 +574,51 @@ body.town {
 
 #timer-seconds {
   left: 60px;
+}
+
+
+
+/*---------------------*\
+    Statistic page
+\*---------------------*/
+.statistic-body {
+  color: #ffd800;
+  margin-top: 40px;
+  margin-left: 80px;
+}
+
+.statistics-table {
+  text-align: center;
+  width: 500px;
+}
+
+
+
+/*---------------------*\
+    About page
+\*---------------------*/
+.about-body {
+  background-image: url('../img/page.png');
+  width: 800px;
+  height: 568px;
+}
+
+.about-text {
+  top: 20px;
+  left: 50px;
+
+}
+
+.about-history {
+  width: 720px;
+  height: 450px;
+}
+
+.black-links {
+  color: #000;
+}
+
+.black-links:hover {
+  color: #fff;
+  transition: all 0.4s ease;
 }

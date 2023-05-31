@@ -29,7 +29,7 @@
               {% endfor %}
             </table>
             {% if request.resolver_match.view_name == 'users:login' %}
-            <a href="{% url 'users:password_reset' %}">Забыли пароль?</a>
+            <a class="black-links" href="{% url 'users:password_reset' %}">Забыли пароль?</a>
             {% endif %}
             <div style="width: 310px; padding-top:5px">
               <a class="btn-secondary" href="{% url 'users:signup' %}" title="Регистрация">Регистрация</a>
@@ -38,6 +38,20 @@
               </button>
             </div>
           </form>
+          <div style="width: 450px; margin-top: 10px;">
+            <div class="signup-errors" style="text-align:center">
+              {% for error in field.errors %}
+              <p>{{ error }}</p>
+              {% endfor %}
+              {% for error2 in form.non_field_errors %}
+              <p>{{ error2 }}</p>
+              {% endfor %}
+            </div>
+            <div>
+              <a class="black-links" style="position: absolute; top: 950px; left: 650px"
+                 href="{% url 'about:index' %}">О проекте</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

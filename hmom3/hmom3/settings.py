@@ -11,7 +11,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '8%7@xv-(g3jiroyz153f*1of39)()6***%_$4$r76f82#f@e8r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'www.momonline.pythonanywhere.com',
@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'towns.apps.TownsConfig',
     'users.apps.UsersConfig',
     'core.apps.CoreConfig',
+    'stats.apps.StatsConfig',
+    'about.apps.AboutConfig',
 ]
 
 AUTH_USER_MODEL = 'users.User'

@@ -2,17 +2,24 @@
 
 <div class="resources layout basic">
   <div class="resources-gold layout basic">
-    <div class="resources-text" id="gold-text">
+    <div class="{% if resources.gold_amount < resources.gold_limit %}resources-text{% else %}resources-limit{% endif%}"
+         id="gold-text"
+    >
       {{ resources.gold_amount|round_down }}
     </div>
   </div>
   <div class="resources-wood layout basic" style="left: 100px;">
-    <div class="resources-text" id="wood-text">
+    <div class="{% if resources.wood_amount < resources.wood_limit %}resources-text{% else %}resources-limit{% endif%}"
+         id="wood-text"
+    >
       {{ resources.wood_amount|round_down }}
+
     </div>
   </div>
   <div class="resources-stone layout basic" style="left: 200px;">
-    <div class="resources-text" id="stone-text">
+    <div class="{% if resources.stone_amount < resources.stone_limit %}resources-text{% else %}resources-limit{% endif%}"
+         id="stone-text"
+    >
       {{ resources.stone_amount|round_down }}
     </div>
   </div>
@@ -27,16 +34,36 @@ var wood = {{ resources.wood_amount|my_float }};
 var gold_income = {{ resources.gold_income }};
 var stone_income = {{ resources.stone_income }};
 var wood_income = {{ resources.wood_income }};
-var timer = 5000
+var timer = 10000
 
 setInterval(function() {
-  gold = gold + gold_income/3600*timer/1000
-  stone = stone + stone_income/3600*timer/1000
-  wood = wood + wood_income/3600*timer/1000
 
+  if(gold>={{ resources.gold_limit }}){
+    document.getElementById("gold-text").classList.remove('resources-text')
+    document.getElementById("gold-text").classList.add('resources-limit')
+    gold = {{ resources.gold_limit }}
+  } else {
+    gold = gold + gold_income/3600*timer/1000
+  }
   document.getElementById("gold-text").innerHTML = Math.floor(gold, 0);
-  document.getElementById("wood-text").innerHTML = Math.floor(wood, 0);
+
+  if(stone>{{ resources.stone_limit }}){
+    document.getElementById("stone-text").classList.remove('resources-text')
+    document.getElementById("stone-text").classList.add('resources-limit')
+    stone = {{ resources.stone_limit }}
+  } else {
+    stone = stone + stone_income/3600*timer/1000
+  }
   document.getElementById("stone-text").innerHTML = Math.floor(stone, 0);
+
+  if(wood>={{ resources.wood_limit }}){
+    document.getElementById("wood-text").classList.remove('resources-text')
+    document.getElementById("wood-text").classList.add('resources-limit')
+    wood = {{ resources.wood_limit }}
+  } else {
+    wood = wood + wood_income/3600*timer/1000
+  }
+  document.getElementById("wood-text").innerHTML = Math.floor(wood, 0);
 
 }, timer);
 </script>

@@ -8,7 +8,8 @@
     {% endblock %}
   </title>
 </head>
-<body {% if "town" in request.path %}class="town"{% endif %}>
+<body class="{% with request.resolver_match.view_name as view_name %}{% if view_name != 'users:login' and view_name != 'users:signup' %}town{% endif %}{% endwith %}">
+
 <main>
   {% block content %}
   {% endblock %}

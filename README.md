@@ -1,6 +1,6 @@
-# hmom3 Online game v.0.2.0
+# hmom3 Online game
 
-**Is under developing**
+*Is under developing*
 
 ![alt text](preview/preview.png?raw=true)
 

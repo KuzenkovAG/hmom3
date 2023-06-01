@@ -7,7 +7,7 @@
 
 <div class="centered layout basic" style="zoom: 1.1">
   <div class="town-view layout basic" style="background-image:
-  url({% get_static_prefix %}img/backgrounds/{{ user.fraction.slug }}.bmp);">
+  url({% get_static_prefix %}img/backgrounds/{{ user.fraction.slug }}.jpg);">
     {% for b in buildings %}
     {% if b.level != 0 %}
     <div class="building selectable {{ b.slug }}{{ b.get_index }}" style="background-image:

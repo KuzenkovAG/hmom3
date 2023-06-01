@@ -65,7 +65,7 @@ body {
 }
 
 body.town {
-  background-image: url('../img/stars_borderless.png');
+  background-image: url('../img/stars_borderless.jpg');
   min-height: 100%;
   padding: 0;
 }
@@ -95,7 +95,7 @@ body.town {
 }
 
 .build-view {
-    background-image: url('../img/background.png');
+    background-image: url('../img/background.jpg');
     width: 800px;
     height: 460px;
     top: 5px;
@@ -422,7 +422,7 @@ body.town {
 \*----------------------------*/
 
 .game-logo {
-    background-image: url('../img/index.png');
+    background-image: url('../img/index.jpg');
     padding-top: 20px;
     width: 1080px;
     height: 1080px;
@@ -598,7 +598,7 @@ body.town {
     About page
 \*---------------------*/
 .about-body {
-  background-image: url('../img/page.png');
+  background-image: url('../img/page.jpg');
   width: 800px;
   height: 568px;
 }

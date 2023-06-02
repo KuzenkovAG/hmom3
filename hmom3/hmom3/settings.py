@@ -1,17 +1,12 @@
 import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '8%7@xv-(g3jiroyz153f*1of39)()6***%_$4$r76f82#f@e8r'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+load_dotenv()
+SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = [
     'www.momonline.pythonanywhere.com',
@@ -31,11 +26,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
-    'towns.apps.TownsConfig',
-    'users.apps.UsersConfig',
-    'core.apps.CoreConfig',
-    'stats.apps.StatsConfig',
-    'about.apps.AboutConfig',
+    'apps.towns.apps.TownsConfig',
+    'apps.users.apps.UsersConfig',
+    'apps.core.apps.CoreConfig',
+    'apps.stats.apps.StatsConfig',
+    'apps.about.apps.AboutConfig',
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -83,6 +78,7 @@ DATABASES = {
 
 
 # Password validation
+# ToDo: It's commented for simple password. After development uncomment it.
 # AUTH_PASSWORD_VALIDATORS = [
 #     {
 #         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -100,8 +96,6 @@ DATABASES = {
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/2.2/topics/i18n/
-
 LANGUAGE_CODE = 'ru-RU'
 
 TIME_ZONE = 'UTC'

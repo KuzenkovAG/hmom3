@@ -1,4 +1,4 @@
-from towns import models
+from apps.towns import models
 
 
 def create_resources(user):

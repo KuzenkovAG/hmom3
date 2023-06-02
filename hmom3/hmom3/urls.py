@@ -4,10 +4,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', include('users.urls', namespace='users')),
-    path('town/', include('towns.urls', namespace='towns')),
-    path('statics/', include('stats.urls', namespace='stats')),
-    path('about/', include('about.urls', namespace='about')),
+    path('', include('apps.users.urls', namespace='users')),
+    path('town/', include('apps.towns.urls', namespace='towns')),
+    path('statics/', include('apps.stats.urls', namespace='stats')),
+    path('about/', include('apps.about.urls', namespace='about')),
     path('management/', admin.site.urls),
 ]
 

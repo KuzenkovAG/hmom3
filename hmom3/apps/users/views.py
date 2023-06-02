@@ -3,7 +3,7 @@ from django.views.generic import CreateView
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 
-from towns.models import Fraction
+from apps.towns.models import Fraction
 from . import forms
 from . import utils
 

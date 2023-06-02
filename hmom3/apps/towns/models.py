@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils import timezone
-from core.balance.time_res import building_time, gold_amount, res_amount
+
+from apps.core.balance.time_res import building_time, gold_amount, res_amount
 
 User = get_user_model()
 SEC_IN_HOUR = 3600

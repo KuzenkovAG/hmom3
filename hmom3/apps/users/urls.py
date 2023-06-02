@@ -9,8 +9,9 @@ from django.contrib.auth.views import (
     PasswordResetConfirmView,
     PasswordResetCompleteView,
 )
+
 from . import views
-from core.decorators import for_not_authorized
+from apps.core.decorators import for_not_authorized
 
 app_name = 'users'
 

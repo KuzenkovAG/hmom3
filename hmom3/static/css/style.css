@@ -102,11 +102,9 @@ body.town {
     left: 1px;
 }
 
-.building {
-}
 
 .button-army-panel {
-    background-image: url('../img/background.png');
+    background-image: url('../img/background.jpg');
     width: 800px;
     height: 180px;
     top: 380px;
@@ -114,7 +112,7 @@ body.town {
 }
 
 .button-panel {
-    background-image: url('../img/background.png');
+    background-image: url('../img/background.jpg');
     width: 800px;
     height: 100px;
     top: 470px;

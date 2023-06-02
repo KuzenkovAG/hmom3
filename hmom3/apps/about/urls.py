@@ -8,4 +8,3 @@ urlpatterns = [
          views.AboutView.as_view(),
          name='index'),
     ]
-

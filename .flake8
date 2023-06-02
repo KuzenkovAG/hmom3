@@ -1,0 +1,3 @@
+[flake8]
+exclude = __pycache__, .idea, .git, .env, .venv, env, venv, migrations, settings.py
+max-line-length = 79

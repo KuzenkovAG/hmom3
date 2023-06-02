@@ -22,14 +22,14 @@
               <span class="btn-selection" onclick="setIndex(-1)">
                 <
               </span>
-              <img id="imgid" src="/media/{{ fractions.0.image }}">
+              <img id="imgid" src="{% get_static_prefix %}img/fractions/{{ fractions.0.slug }}.bmp">
 
               <script>
     var imageNo = 0
 
     var ImageSources=[
       {% for fraction in fractions %}
-      '/media/{{fraction.image}}',
+      '{% get_static_prefix %}img/fractions/{{ fraction.slug }}.bmp',
       {% endfor %}
     ]
     var Header=[

@@ -28,9 +28,6 @@
               </tr>
               {% endfor %}
             </table>
-            {% if request.resolver_match.view_name == 'users:login' %}
-            <a class="black-links" href="{% url 'users:password_reset' %}">Забыли пароль?</a>
-            {% endif %}
             <div style="width: 310px; padding-top:5px">
               <a class="btn-secondary" href="{% url 'users:signup' %}" title="Регистрация">Регистрация</a>
               <button type="submit" class="btn-primary">
@@ -48,7 +45,7 @@
               {% endfor %}
             </div>
             <div>
-              <a class="black-links" style="position: relative; left: 210px;"
+              <a class="black-links" style="position: relative; left: 210px; font-size: 18px;"
                  href="{% url 'about:index' %}">О проекте</a>
             </div>
           </div>

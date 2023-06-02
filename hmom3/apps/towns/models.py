@@ -20,11 +20,6 @@ class Fraction(models.Model):
     bonus = models.CharField(max_length=256, verbose_name='Бонус')
     description = models.CharField(max_length=512, verbose_name='Описание')
     slug = models.CharField(max_length=20, verbose_name='Slug', unique=True)
-    image = models.ImageField(
-        'Изображение',
-        upload_to='fractions/',
-        blank=True
-    )
 
     def __str__(self):
         return self.slug

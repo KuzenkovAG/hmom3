@@ -4,7 +4,7 @@ from . import models
 
 class FractionAdmin(admin.ModelAdmin):
     """Edit Fractions."""
-    list_display = ('pk', 'name', 'slug', 'bonus', 'description', 'image')
+    list_display = ('pk', 'name', 'slug', 'bonus', 'description')
 
 
 class ResourcesAdmin(admin.ModelAdmin):

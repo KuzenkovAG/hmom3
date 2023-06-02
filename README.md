@@ -1,6 +1,9 @@
 # hmom3 Online game
 
-*Is under developing*
+![Top language](https://img.shields.io/github/languages/top/KuzenkovAG/hmom3?style=flat-square&logo=appveyor)
+![Languages count](https://img.shields.io/github/languages/count/KuzenkovAG/hmom3?style=flat-square&logo=appveyor)
+![Commit activity](https://img.shields.io/github/commit-activity/m/KuzenkovAG/hmom3?style=flat-square&logo=appveyor)
+
 
 ![alt text](preview/preview.png?raw=true)
 

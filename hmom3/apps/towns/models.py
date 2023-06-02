@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 
-from apps.core.balance.time_res import building_time, gold_amount, res_amount
+from ..core.balance.duration import get_building_time, get_gold_amount, get_resources_amount
 
 User = get_user_model()
 SEC_IN_HOUR = 3600
@@ -91,7 +91,7 @@ class BuildingType(models.Model):
         return self.name
 
     def get_build_time(self, level):
-        return building_time(level=level, time=self.base_time)
+        return get_building_time(level=level, time=self.base_time)
 
 
 class BuildingRequirement(models.Model):
@@ -203,11 +203,11 @@ class UserBuilding(models.Model):
             base_gold = self.building.type.base_gold
             base_wood = self.building.type.base_wood
             base_stone = self.building.type.base_stone
-            self.building_time = building_time(
+            self.building_time = get_building_time(
                 level=self.level, time=build_time)
-            self.gold = gold_amount(level=self.level, res=base_gold)
-            self.wood = res_amount(level=self.level, res=base_wood)
-            self.stone = res_amount(level=self.level, res=base_stone)
+            self.gold = get_gold_amount(level=self.level, res=base_gold)
+            self.wood = get_resources_amount(level=self.level, res=base_wood)
+            self.stone = get_resources_amount(level=self.level, res=base_stone)
         super(UserBuilding, self).save(*args, **kwargs)
 
     def get_index(self):

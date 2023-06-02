@@ -5,7 +5,7 @@ from django.contrib.auth.views import (
 )
 
 from . import views
-from apps.core.decorators import for_not_authorized
+from ..core.decorators import for_not_authorized
 
 app_name = 'users'
 

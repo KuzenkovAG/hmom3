@@ -1,4 +1,4 @@
-from apps.towns.views import TemplateViewWithContext
+from ..towns.views import TemplateViewWithContext
 
 
 class StatisticView(TemplateViewWithContext):

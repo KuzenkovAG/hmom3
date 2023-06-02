@@ -28,14 +28,14 @@ GOLD_EXPONENT_COEF = 4
 ZERO_EXPONENT = 1
 
 
-def building_time(level, tech=1, time=None):
+def get_building_time(level, tech=1, time=None):
     """Building time depend on level."""
     result = ((1 / math.e ** (level - ZERO_EXPONENT) + 1 * BUILD_TIME_COEF)
               * level ** BUILD_EXPONENT_COEF) * time / tech
     return result
 
 
-def research_time(level, tech=1, time=None):
+def get_research_time(level, tech=1, time=None):
     """Research time depend on level."""
     result = (
         (1 / math.e ** (level - ZERO_EXPONENT) + SEARCH_TIME_COEF) *
@@ -44,7 +44,7 @@ def research_time(level, tech=1, time=None):
     return result
 
 
-def gold_amount(level, tech=1, res=None):
+def get_gold_amount(level, tech=1, res=None):
     """Gold amount depend on level."""
     result = (
         (1 / math.e ** (level - ZERO_EXPONENT) + GOLD_TIME_COEF) *
@@ -53,7 +53,7 @@ def gold_amount(level, tech=1, res=None):
     return int(result)
 
 
-def res_amount(level, tech=1, res=None):
+def get_resources_amount(level, tech=1, res=None):
     """Wood or stone amount depend on level."""
     result = (
         (1 / math.e ** (level - ZERO_EXPONENT) + RES_TIME_COEF) *
@@ -66,6 +66,6 @@ if __name__ == '__main__':
     for level in levels:
         print(
             level,
-            gold_amount(level, 1, INITIAL),
-            res_amount(level, 1, INITIAL/100)
+            get_gold_amount(level, 1, INITIAL),
+            get_resources_amount(level, 1, INITIAL / 100)
         )

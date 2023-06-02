@@ -3,9 +3,8 @@ from django.views.generic import CreateView
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 
-from apps.towns.models import Fraction
+from ..towns.models import Fraction
 from . import forms
-from . import utils
 
 User = get_user_model()
 
@@ -25,6 +24,5 @@ class UserCreationView(CreateView):
         form.save()
         username = self.request.POST['username']
         user = get_object_or_404(User, username=username)
-        # utils.set_up_user(user)
         login(self.request, user)
         return redirect(self.success_url)

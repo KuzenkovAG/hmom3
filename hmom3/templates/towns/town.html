@@ -10,9 +10,12 @@
   url({% get_static_prefix %}img/backgrounds/{{ user.fraction.slug }}.jpg);">
     {% for b in buildings %}
     {% if b.level != 0 %}
-    <div class="building selectable {{ b.slug }}{{ b.get_index }}" style="background-image:
+    <a class="layout basic" href="{{ b.get_absolute_url }}">
+      <div class="building selectable {{ b.slug }}{{ b.get_index }}" style="background-image:
   url({% get_static_prefix %}img/buildings/{{ b.slug }}{{ b.get_index }}.png);">
-    </div>
+      </div>
+    </a>
+
     {% endif %}
     {% endfor %}
   {% include 'towns/includes/button-army-panel.html' %}

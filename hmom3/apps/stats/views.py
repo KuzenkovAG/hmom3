@@ -1,5 +1,5 @@
-from ..towns.views import TemplateViewWithContext
+from ..towns.views import ViewWithContext
 
 
-class StatisticView(TemplateViewWithContext):
+class StatisticView(ViewWithContext):
     template_name = 'stats/index.html'

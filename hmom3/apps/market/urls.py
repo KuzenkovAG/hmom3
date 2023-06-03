@@ -8,7 +8,7 @@ app_name = 'market'
 urlpatterns = [
     path('',
          login_required(views.MarketView.as_view()),
-         name='market'),
+         name='index'),
     path('trade/',
          login_required(views.TradeView.as_view()),
          name='trade'),

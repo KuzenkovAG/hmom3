@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.views.generic import RedirectView
+from ..core.views import ViewWithContext
 
-# Create your views here.
+
+class MarketView(ViewWithContext):
+    template_name = 'market/index.html'
+
+
+class TradeView(RedirectView):
+    pass

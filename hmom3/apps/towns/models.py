@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 from django.conf import settings
+from django.urls import reverse
 
 from ..core.balance.duration_cost import get_building_time
 
@@ -19,6 +20,12 @@ DEF_STONE_INCOME = settings.DEF_STONE_INCOME
 DEF_GOLD_LIMIT = settings.DEF_GOLD_LIMIT
 DEF_STONE_LIMIT = settings.DEF_STONE_LIMIT
 DEF_WOOD_LIMIT = settings.DEF_WOOD_LIMIT
+
+
+BUILDING_URL = {
+    'hall': 'towns:build',
+    'market': 'market:index',
+}
 
 
 class Fraction(models.Model):
@@ -204,6 +211,13 @@ class UserBuilding(models.Model):
 
     def __str__(self):
         return f'{self.building} {self.user.username}'
+
+    def get_absolute_url(self):
+        """Depend on building generate related url."""
+        name_space = BUILDING_URL.get(self.slug[2:])
+        if name_space:
+            return reverse(name_space)
+        return ''
 
     def get_index(self) -> str:
         """

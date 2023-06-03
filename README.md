@@ -1,7 +1,6 @@
 # hmom3 Online game
 
-## Deployment on server
-[deploy] <- last working version
+
 
 ![Top language](https://img.shields.io/github/languages/top/KuzenkovAG/hmom3?style=flat-square&logo=appveyor)
 ![Languages count](https://img.shields.io/github/languages/count/KuzenkovAG/hmom3?style=flat-square&logo=appveyor)
@@ -12,6 +11,9 @@
 ![alt text](preview/registration.jpg?raw=true)
 ![alt text](preview/town.jpg?raw=true)
 ![alt text](preview/build.jpg?raw=true)
+
+## Deployment on server
+[deploy] <- last working version
 
 ## Features
 - Select your favorite fraction;

@@ -620,3 +620,70 @@ body.town {
   color: #fff;
   transition: all 0.4s ease;
 }
+
+/*---------------------*\
+    Market page
+\*---------------------*/
+
+.market-left {
+  top: 20px;
+  left: 20px;
+  width: 370px;
+  height: 300px;
+}
+
+.market-crossline {
+  top: 20px;
+  left: 402px;
+  background-image: url('../img/market/cross-line.png');
+  width: 3px;
+  height: 300px;
+}
+
+.market-right {
+  top: 20px;
+  left: 405px;
+  width: 370px;
+  height: 300px;
+}
+
+.market-resource-body {
+  background-image: url('../img/market/resource_cell_big.png');
+  width: 111px;
+  height: 127px;
+}
+
+.market-gold {
+  top: 23px;
+  left: 4px;
+  background-image: url('../img/market/gold_market.png');
+  width: 100px;
+  height: 47px;
+}
+
+.market-wood {
+  left: 4px;
+  top: 15px;
+  background-image: url('../img/market/wood_market.png');
+  width: 100px;
+  height: 62px;
+}
+
+.market-stone {
+  top: 10px;
+  left: 5px;
+  background-image: url('../img/market/stone_market.png');
+  width: 100px;
+  height: 66px;
+}
+
+.market-text-body {
+  top: 97px;
+  color: #32f31b;
+  font-size: 14px;
+  text-align: center;
+}
+
+.market-text {
+  text-align: center;
+}

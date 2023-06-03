@@ -1,28 +1,13 @@
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.contrib.auth import get_user_model
-from django.views.generic import TemplateView, RedirectView
+from django.views.generic import RedirectView
 
 from .models import UserBuilding, BuildingInProcess
 from . import utils
-
-User = get_user_model()
-
-
-class TemplateViewWithContext(TemplateView):
-    """Add some data to context."""
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        user = get_object_or_404(
-            User.objects.select_related('fraction'),
-            username=self.request.user.username
-        )
-        context['user'] = user
-        context['resources'] = utils.get_and_update_resources(user)
-        return context
+from ..core.views import ViewWithContext
 
 
-class TownView(TemplateViewWithContext):
+class TownView(ViewWithContext):
     template_name = 'towns/town.html'
 
     def get_context_data(self, *args, **kwargs):
@@ -35,7 +20,7 @@ class TownView(TemplateViewWithContext):
         return context
 
 
-class BuildView(TemplateViewWithContext):
+class BuildView(ViewWithContext):
     template_name = 'towns/build.html'
 
     def get_context_data(self, *args, **kwargs):
@@ -52,11 +37,11 @@ class BuildView(TemplateViewWithContext):
         return context
 
 
-class ArmyView(TemplateViewWithContext):
+class ArmyView(ViewWithContext):
     template_name = 'towns/army.html'
 
 
-class ResearchView(TemplateViewWithContext):
+class ResearchView(ViewWithContext):
     template_name = 'towns/research.html'
 
 

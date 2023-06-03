@@ -1,4 +1,3 @@
-import datetime as dt
 import os
 
 from dotenv import load_dotenv
@@ -33,6 +32,7 @@ INSTALLED_APPS = [
     'apps.core.apps.CoreConfig',
     'apps.stats.apps.StatsConfig',
     'apps.about.apps.AboutConfig',
+    'apps.market.apps.MarketConfig',
 ]
 
 AUTH_USER_MODEL = 'users.User'

@@ -10,6 +10,46 @@
 <div class="centered layout basic" style="zoom: 1.1">
   <div class="build-view layout basic">
 
+      <div class="market-left layout basic">
+        <div class="market-resource-body layout basic selectable"
+          style="left: 10px; top: 25px;"
+        >
+          <div class="market-gold"></div>
+          <div class="market-text-body">
+            <div class="market-text">
+              {{ resources.gold_amount|round_down }}
+            </div>
+          </div>
+        </div>
+
+        <div class="market-resource-body layout basic selectable"
+          style="left: 130px; top: 25px;"
+        >
+          <div class="market-wood"></div>
+          <div class="market-text-body">
+            <div class="market-text">
+              {{ resources.wood_amount|round_down }}
+            </div>
+          </div>
+        </div>
+
+        <div class="market-resource-body layout basic selectable"
+          style="left: 250px; top: 25px;"
+        >
+          <div class="market-stone"></div>
+          <div class="market-text-body">
+            <div class="market-text">
+              {{ resources.stone_amount|round_down }}
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="market-crossline"></div>
+      <div class="market-right">
+
+      </div>
+
   </div>
   {% include 'towns/includes/button-panel.html' %}
   {% include 'towns/includes/bottom-line-panel.html' %}

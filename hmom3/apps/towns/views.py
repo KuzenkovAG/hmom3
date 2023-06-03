@@ -72,12 +72,12 @@ class ConstructBuildView(RedirectView):
             if building.level > 0 or not building.user_building.all():
                 resource = utils.get_and_update_resources(user)
                 resource_condition = (
-                        building.gold <= resource.get_gold_amount and
+                        building.gold <= resource.gold_amount and
                         building.wood <= resource.wood_amount and
                         building.stone <= resource.stone_amount
                 )
                 if resource_condition:
-                    resource.get_gold_amount -= building.gold
+                    resource.gold_amount -= building.gold
                     resource.wood_amount -= building.wood
                     resource.stone_amount -= building.stone
                     resource.save()
@@ -85,6 +85,6 @@ class ConstructBuildView(RedirectView):
                         user=user,
                         building=building,
                         finish_date=utils.get_finish_time(
-                            building.get_building_time)
+                            building.building_time)
                     )
         return super().get(request, *args, **kwargs)

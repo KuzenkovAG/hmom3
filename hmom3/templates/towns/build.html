@@ -52,17 +52,23 @@
         <div class="build-cost layout basic">
           {% if b.gold %}
           <div class="resources-gold layout basic">
-            <div class="resources-text">{{ b.gold }}</div>
+            <div class="{% if resources.gold_amount < b.gold %}resources-limit{% else%}resources-text{% endif %}">
+              {{ b.gold }}
+            </div>
           </div>
           {% endif %}
           {% if b.wood %}
           <div class="resources-wood layout basic" style="left: 100px;">
-            <div class="resources-text">{{ b.wood }}</div>
+            <div class="{% if resources.wood_amount < b.wood %}resources-limit{% else%}resources-text{% endif %}">
+              {{ b.wood }}
+            </div>
           </div>
           {% endif %}
           {% if b.stone %}
           <div class="resources-stone layout basic" style="left: 200px;">
-            <div class="resources-text">{{ b.stone }}</div>
+            <div class="{% if resources.stone_amount < b.stone %}resources-limit{% else%}resources-text{% endif %}">
+              {{ b.stone }}
+            </div>
           </div>
           {% endif %}
         </div>

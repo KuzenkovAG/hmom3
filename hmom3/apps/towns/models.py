@@ -1,17 +1,24 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils import timezone
+from django.conf import settings
 
-from ..core.balance.duration import get_building_time, get_gold_amount, get_resources_amount
+from ..core.balance.duration_cost import get_building_time
 
 User = get_user_model()
+
 SEC_IN_HOUR = 3600
-CHANGE_IMAGE_PER_LEVEL = 5
-BUILDINGS_WITH_CHANGE_IMAGE = {
-    'castle': lambda lvl: 2 if lvl > 10 else lvl // CHANGE_IMAGE_PER_LEVEL,
-    'hall': lambda lvl: 3 if lvl > 15 else lvl // CHANGE_IMAGE_PER_LEVEL,
-    'mage': lambda lvl: 3 if lvl > 15 else lvl // CHANGE_IMAGE_PER_LEVEL,
-}
+BUILDINGS_WITH_CHANGE_IMAGE = settings.BUILDINGS_WITH_CHANGE_IMAGE
+
+DEF_GOLD_AMOUNT = settings.DEF_GOLD_AMOUNT
+DEF_WOOD_AMOUNT = settings.DEF_WOOD_AMOUNT
+DEF_STONE_AMOUNT = settings.DEF_STONE_AMOUNT
+DEF_GOLD_INCOME = settings.DEF_GOLD_INCOME
+DEF_WOOD_INCOME = settings.DEF_WOOD_INCOME
+DEF_STONE_INCOME = settings.DEF_STONE_INCOME
+DEF_GOLD_LIMIT = settings.DEF_GOLD_LIMIT
+DEF_STONE_LIMIT = settings.DEF_STONE_LIMIT
+DEF_WOOD_LIMIT = settings.DEF_WOOD_LIMIT
 
 
 class Fraction(models.Model):
@@ -37,22 +44,23 @@ class Resource(models.Model):
         verbose_name='Ресурсы',
         related_name='resource',
     )
-    gold_amount = models.FloatField(default=1000)
-    wood_amount = models.FloatField(default=25)
-    stone_amount = models.FloatField(default=25)
-    gold_income = models.IntegerField(default=100)
-    wood_income = models.IntegerField(default=3)
-    stone_income = models.IntegerField(default=3)
+    gold_amount = models.FloatField(default=DEF_GOLD_AMOUNT)
+    wood_amount = models.FloatField(default=DEF_WOOD_AMOUNT)
+    stone_amount = models.FloatField(default=DEF_STONE_AMOUNT)
+    gold_income = models.IntegerField(default=DEF_GOLD_INCOME)
+    wood_income = models.IntegerField(default=DEF_WOOD_INCOME)
+    stone_income = models.IntegerField(default=DEF_STONE_INCOME)
     updated_time = models.DateTimeField(auto_now_add=True)
-    gold_limit = models.BigIntegerField(default=10000)
-    wood_limit = models.BigIntegerField(default=1000)
-    stone_limit = models.BigIntegerField(default=1000)
+    gold_limit = models.BigIntegerField(default=DEF_GOLD_LIMIT)
+    wood_limit = models.BigIntegerField(default=DEF_STONE_LIMIT)
+    stone_limit = models.BigIntegerField(default=DEF_WOOD_LIMIT)
 
     class Meta:
         verbose_name = 'Ресурсы'
         verbose_name_plural = 'Ресурсы'
 
     def update_data(self):
+        """Update all resources."""
         time_now_utc = timezone.now()
         time_difference = time_now_utc - self.updated_time
         sec_passed = time_difference.total_seconds()
@@ -65,6 +73,7 @@ class Resource(models.Model):
         self.save()
 
     def _check_limits(self):
+        """Check resources limits."""
         if self.gold_amount > self.gold_limit:
             self.gold_amount = self.gold_limit
         if self.wood_amount > self.wood_limit:
@@ -74,7 +83,7 @@ class Resource(models.Model):
 
 
 class BuildingType(models.Model):
-    """All Building types."""
+    """Base Building types."""
     name = models.CharField(max_length=32, verbose_name='Название')
     order = models.SmallIntegerField('Порядок', null=True, blank=True)
     base_time = models.DurationField(null=True, blank=True)
@@ -95,7 +104,7 @@ class BuildingType(models.Model):
 
 
 class BuildingRequirement(models.Model):
-    """Requirements for buildings."""
+    """Base Requirements for buildings."""
     building = models.ForeignKey(
         'Building',
         on_delete=models.CASCADE,
@@ -196,31 +205,14 @@ class UserBuilding(models.Model):
     def __str__(self):
         return f'{self.building} {self.user.username}'
 
-    def save(self, level_up=False, requirements=None, *args, **kwargs):
-        if level_up:
-            self.level += 1
-            build_time = self.building.type.base_time
-            base_gold = self.building.type.base_gold
-            base_wood = self.building.type.base_wood
-            base_stone = self.building.type.base_stone
-            self.building_time = get_building_time(
-                level=self.level, time=build_time)
-            self.gold = get_gold_amount(level=self.level, res=base_gold)
-            self.wood = get_resources_amount(level=self.level, res=base_wood)
-            self.stone = get_resources_amount(level=self.level, res=base_stone)
-        super(UserBuilding, self).save(*args, **kwargs)
-
-    def get_index(self):
+    def get_index(self) -> str:
         """
         Get index for buildings what need change image.
         """
-        level = self.level
-        index = BUILDINGS_WITH_CHANGE_IMAGE.get(self.slug.split('-')[1])
-        if index:
-            index = index(level + 1)
-        else:
-            index = ''
-        return f'{index}'
+        calculate_index = BUILDINGS_WITH_CHANGE_IMAGE.get(
+            self.slug.split('-')[1])
+        index = str(calculate_index(self.level + 1)) if calculate_index else ''
+        return index
 
 
 class BuildingInProcess(models.Model):

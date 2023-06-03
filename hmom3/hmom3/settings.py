@@ -1,4 +1,6 @@
+import datetime as dt
 import os
+
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -129,3 +131,35 @@ def show_toolbar(request):
 DEBUG_TOOLBAR_CONFIG = {
     "SHOW_TOOLBAR_CALLBACK": show_toolbar,
 }
+
+
+"""Game balance settings."""
+# Resources
+DEF_GOLD_AMOUNT = 1000
+DEF_WOOD_AMOUNT = 25
+DEF_STONE_AMOUNT = 25
+DEF_GOLD_INCOME = 100
+DEF_WOOD_INCOME = 3
+DEF_STONE_INCOME = 3
+DEF_GOLD_LIMIT = 1000
+DEF_STONE_LIMIT = 300
+DEF_WOOD_LIMIT = 300
+
+# Change icon depend on building level
+CHANGE_IMAGE_PER_LEVEL = 5  # image of building will change each this level
+BUILDINGS_WITH_CHANGE_IMAGE = {
+    'castle': lambda lvl: 2 if lvl > 10 else lvl // CHANGE_IMAGE_PER_LEVEL,
+    'hall': lambda lvl: 3 if lvl > 15 else lvl // CHANGE_IMAGE_PER_LEVEL,
+    'mage': lambda lvl: 3 if lvl > 15 else lvl // CHANGE_IMAGE_PER_LEVEL,
+}
+
+# Constance what change duration increase level
+BUILD_TIME_COEF = 0.08
+SEARCH_TIME_COEF = 0.2
+RES_TIME_COEF = 0.2
+GOLD_TIME_COEF = 0.5
+BUILD_EXPONENT_COEF = 3
+SEARCH_EXPONENT_COEF = 2
+RES_EXPONENT_COEF = 2.5
+GOLD_EXPONENT_COEF = 4
+ZERO_EXPONENT = 1

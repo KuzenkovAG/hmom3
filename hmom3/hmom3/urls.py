@@ -8,6 +8,7 @@ urlpatterns = [
     path('town/', include('apps.towns.urls', namespace='towns')),
     path('statics/', include('apps.stats.urls', namespace='stats')),
     path('about/', include('apps.about.urls', namespace='about')),
+    path('market/', include('apps.market.urls', namespace='market')),
     path('management/', admin.site.urls),
 ]
 

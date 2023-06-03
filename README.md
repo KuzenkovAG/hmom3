@@ -12,12 +12,15 @@
 
 
 ## Features
-- Can select your favorite fraction;
+- Select your favorite fraction;
 - Make buildings;
 - Store resources.
 
 
 ## History
++ *v.0.4.0*
+Now increase gold incoming amount depend on administration building level;
+Now increase resources storage amount depend on storager level.
 + *v.0.3.0*  
 Add limit to resources;  
 Add about page;  

@@ -11,50 +11,414 @@
   <div class="build-view layout basic">
 
       <div class="market-left layout basic">
+        <div class="market-header" style="left: 140px; top: -5px">
+          Ваши ресурсы
+        </div>
         <div class="market-resource-body layout basic selectable"
-          style="left: 10px; top: 25px;"
+            style="left: 10px; top: 25px;"
+            id="gold-left-body"
         >
           <div class="market-gold"></div>
-          <div class="market-text-body">
-            <div class="market-text">
+          <div class="market-text-body" id="gold-text-left">
               {{ resources.gold_amount|round_down }}
-            </div>
           </div>
         </div>
 
         <div class="market-resource-body layout basic selectable"
-          style="left: 130px; top: 25px;"
+             style="left: 130px; top: 25px;"
+             id="wood-left-body"
         >
           <div class="market-wood"></div>
-          <div class="market-text-body">
-            <div class="market-text">
-              {{ resources.wood_amount|round_down }}
-            </div>
+          <div class="market-text-body" id="wood-text-left">
+            {{ resources.wood_amount|round_down }}
           </div>
         </div>
 
         <div class="market-resource-body layout basic selectable"
-          style="left: 250px; top: 25px;"
+             style="left: 250px; top: 25px;"
+             id="stone-left-body"
         >
           <div class="market-stone"></div>
-          <div class="market-text-body">
-            <div class="market-text">
-              {{ resources.stone_amount|round_down }}
-            </div>
+          <div class="market-text-body" id="stone-text-left">
+            {{ resources.stone_amount|round_down }}
+          </div>
+        </div>
+      </div>
+
+
+      <div class="market-crossline"></div>
+
+
+      <div class="market-right layout basic">
+        <div class="market-header" style="right: 100px; top: -5px">
+          Выберете для обмена
+        </div>
+        <div class="market-resource-body layout basic selectable"
+             style="left: 10px; top: 25px;"
+             id="gold-right-body"
+        >
+          <div class="market-gold"></div>
+          <div class="market-text-body" id="gold-text-right">
+            -
           </div>
         </div>
 
+        <div class="market-resource-body layout basic selectable"
+             style="left: 130px; top: 25px;"
+             id="wood-right-body"
+        >
+          <div class="market-wood"></div>
+          <div class="market-text-body" id="wood-text-right">
+            -
+          </div>
+        </div>
+
+        <div class="market-resource-body layout basic selectable"
+             style="left: 250px; top: 25px;"
+             id="stone-right-body"
+        >
+          <div class="market-stone"></div>
+          <div class="market-text-body" id="stone-text-right">
+            -
+          </div>
+        </div>
       </div>
-      <div class="market-crossline"></div>
-      <div class="market-right">
+      {% if show %}
+      <div class="market-bottom layout basic">
+        <div class="market-resource-small-body layout basic selectable"
+             style="left: 5px; top: 5px;"
+             id="place-left-body"></div>
+
+        <div class="market-header" style="left: 230px; top: 90px">
+          Отдать
+        </div>
+        <div class="market-header" style="right: 220px; top: 90px">
+          Получить
+        </div>
+        <div class="market-text-input market-text-body"
+             style="right: 200px; top:120px;">
+          <div style="position: relative; top: 6px" id="input-right"></div>
+        </div>
+        <div class="slider-body ">
+          <input type="range" id="range" min="0" max="0" value="0" step="0" class="slider-range">
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in form %}
+            {{ field }}
+            {% endfor %}
+            <button type="submit" class="btn-primary" style="position: relative; left:25px; top:30px;">
+                Обмен
+            </button>
+          </form>
+          <div class="form-errors">
+            {% for error in field.errors %}
+            <p>{{ error }}</p>
+            {% endfor %}
+            {% for error2 in form.non_field_errors %}
+            <p>{{ error2 }}</p>
+            {% endfor %}
+          </div>
+        </div>
+          <script>
+const input = document.querySelector('#range');
+const log_l = document.getElementById("id_value");
+const log_r = document.getElementById("input-right");
+
+input.addEventListener('input', updateValue);
+
+function updateValue(e) {
+  log_l.value = e.target.value;
+  updateResult(e.target.value)
+}
+
+function updateResult(e) {
+  if(e<0) {
+    e = 0
+    log_l.value = 0
+  }
+  else if(Number(e)>=Number(input.max)) {
+    e = input.max
+    log_l.value = e
+  }
+  log_r.textContent = Math.round(e * rate)
+  input.value = e
+}
+          </script>
+
+
+        <div class="market-resource-small-body layout basic selectable"
+             style="right: 5px; top: 5px;"
+             id="place-right-body"></div>
 
       </div>
-
+      {% else %}
+      <div class="form-errors" style="top: 240px; font-size: 14px;">
+        Торговля доступна после постройки рынка
+      </div>
+      {% endif %}
   </div>
   {% include 'towns/includes/button-panel.html' %}
   {% include 'towns/includes/bottom-line-panel.html' %}
 </div>
 
+{% if show %}
+<script>
+const gold_per_wood = {{ gold_per_wood }}
+const gold_per_stone = {{ gold_per_stone }}
+const wood_per_gold = {{ wood_per_gold }}
+const wood_per_stone = {{ wood_per_stone }}
+const stone_per_gold = {{ stone_per_gold }}
+const stone_per_wood = {{ stone_per_wood }}
 
+let gold_l = document.getElementById("gold-left-body")
+let wood_l = document.getElementById("wood-left-body")
+let stone_l = document.getElementById("stone-left-body")
+
+let gold_text_right = document.getElementById("gold-text-right")
+let wood_text_right = document.getElementById("wood-text-right")
+let stone_text_right = document.getElementById("stone-text-right")
+
+let gold_text_left = document.getElementById("gold-text-left")
+let wood_text_left = document.getElementById("wood-text-left")
+let stone_text_left = document.getElementById("stone-text-left")
+
+// для смены иконки
+let place_l = document.getElementById("place-left-body")
+let place_r = document.getElementById("place-right-body")
+
+let input_l = document.getElementById("id_value")
+let input_r = document.getElementById("input-right")
+
+// что меняем
+let from = document.getElementById("id_from_resource")
+let to = document.getElementById("id_to_resource")
+
+// для работы с диапазоном
+let range = document.getElementById("range")
+var rate = 0
+
+function clearRangeAndRightSelected() {
+  rate = 0
+  range.step = 0;
+  range.value = 0;
+  range.max = 0;
+  from.value = 0;
+  to.value = 0;
+  input_l.value = 0;
+  input_r.textContent = 0
+  place_r.innerHTML = ''
+  gold_text_right.innerHTML = ''
+  wood_text_right.innerHTML = ''
+  stone_text_right.innerHTML = ''
+  if(gold_r.classList.contains('selected')) {
+    gold_r.classList.remove('selected')
+  } else if(wood_r.classList.contains('selected')) {
+    wood_r.classList.remove('selected')
+  } else if(stone_r.classList.contains('selected')) {
+    stone_r.classList.remove('selected')
+  }
+}
+
+function clearGoldLeft() {
+  if(gold_l.classList.contains('selected')) {
+    gold_l.classList.remove('selected')
+  }
+}
+
+function clearWoodLeft() {
+  if(wood_l.classList.contains('selected')) {
+    wood_l.classList.remove('selected')
+  }
+}
+
+function clearStoneLeft() {
+  if(stone_l.classList.contains('selected')) {
+    stone_l.classList.remove('selected')
+  }
+}
+
+function clearGoldRight() {
+  if(gold_r.classList.contains('selected')) {
+    gold_r.classList.remove('selected')
+  }
+}
+
+function clearWoodRight() {
+  if(wood_r.classList.contains('selected')) {
+    wood_r.classList.remove('selected')
+  }
+}
+
+function clearStoneRight() {
+  if(stone_r.classList.contains('selected')) {
+    stone_r.classList.remove('selected')
+  }
+}
+
+
+// выбор gold
+gold_l.addEventListener('click', ()=> {
+  clearRangeAndRightSelected()
+  if(gold_l.classList.contains('selected')) {
+  gold_l.classList.remove('selected');
+  } else {
+  gold_l.classList.add('selected');
+  from.value = 'gold'
+  // устанавливаем курс
+  gold_text_right.innerHTML = '-'
+  wood_text_right.innerHTML = String(wood_per_gold) + ' / 1'
+  stone_text_right.innerHTML = String(stone_per_gold) + ' / 1'
+  // меняем содержимое place
+  place_l.innerHTML = '<div class="market-gold"></div>'
+  // меняем диапазон
+  range.max = parseInt(gold_text_left.innerHTML)
+  range.value = 0
+  input_l.value = 0
+  clearWoodLeft();
+  clearStoneLeft();
+}})
+
+// выбор wood
+wood_l.addEventListener('click', ()=> {
+  clearRangeAndRightSelected()
+  if(wood_l.classList.contains('selected')) {
+  wood_l.classList.remove('selected');
+  } else {
+  from.value = 'wood'
+  wood_l.classList.add('selected');
+  // устанавливаем курс
+  gold_text_right.innerHTML =  '1 / ' + String(gold_per_wood)
+  wood_text_right.innerHTML = '-'
+  stone_text_right.innerHTML = String(stone_per_wood) + ' / 1'
+  // меняем содержимое place
+  place_l.innerHTML = '<div class="market-wood"></div>'
+  // меняем диапазон
+  range.max = parseInt(wood_text_left.innerHTML)
+  range.value = 0
+  input_l.value = 0
+  clearGoldLeft();
+  clearStoneLeft();
+}})
+
+// выбор stone
+stone_l.addEventListener('click', ()=> {
+  clearRangeAndRightSelected()
+  if(stone_l.classList.contains('selected')) {
+  stone_l.classList.remove('selected');
+  } else {
+  from.value = 'stone'
+  stone_l.classList.add('selected');
+  // устанавливаем курс
+  gold_text_right.innerHTML = '1 / ' + String(gold_per_stone)
+  wood_text_right.innerHTML = String(wood_per_stone) + ' / 1'
+  stone_text_right.innerHTML = '-'
+  // меняем содержимое place
+  place_l.innerHTML = '<div class="market-stone"></div>'
+  // меняем диапазон
+  range.max = parseInt(stone_text_left.innerHTML)
+  range.value = 0
+  input_l.value = 0
+  clearGoldLeft();
+  clearWoodLeft();
+}})
+
+
+let gold_r = document.getElementById("gold-right-body")
+let wood_r = document.getElementById("wood-right-body")
+let stone_r = document.getElementById("stone-right-body")
+
+function clearRightSelected() {
+  to.value = 0;
+  range.step = 0;
+  rate = 0;
+  place_r.innerHTML = ''
+  input_l.value = 0
+  input_r.innerHTML = 0
+}
+
+gold_r.addEventListener('click', ()=> {
+  if(gold_r.classList.contains('selected')) {
+    gold_r.classList.remove('selected');
+    clearRightSelected()
+  } else {
+    to.value = 'gold'
+    gold_r.classList.add('selected');
+    // меняем содержимое place
+    place_r.innerHTML = '<div class="market-gold"></div>'
+    // меняем шаг диапазона
+    range.value = 0
+    input_l.value = 0
+    input_r.innerHTML = 0
+    // устанавливаем диапазон в зависимости от ресурса
+    if(gold_l.classList.contains('selected')) {
+      range.step = 0
+      rate = 0
+    }else if(wood_l.classList.contains('selected')) {
+        range.step = 1
+        rate = gold_per_wood
+      }else if(stone_l.classList.contains('selected')) {
+          range.step = 1
+          rate = gold_per_stone
+    }
+    clearWoodRight();
+    clearStoneRight();
+}})
+
+wood_r.addEventListener('click', ()=> {
+  if(wood_r.classList.contains('selected')) {
+  wood_r.classList.remove('selected');
+  clearRightSelected()
+  } else {
+  to.value = 'wood'
+  wood_r.classList.add('selected');
+  // меняем содержимое place
+  place_r.innerHTML = '<div class="market-wood"></div>'
+  // устанавливаем диапазон в зависимости от ресурса
+  range.value = 0
+  input_l.value = 0
+  input_r.innerHTML = 0
+  if(gold_l.classList.contains('selected')) {
+    range.step = wood_per_gold
+    rate = 1/wood_per_gold
+  }else if(wood_l.classList.contains('selected')) {
+    range.step = 0
+    rate = 0
+  }else if(stone_l.classList.contains('selected')) {
+    range.step = stone_per_wood
+    rate = 1/stone_per_wood
+  }
+  clearGoldRight();
+  clearStoneRight();
+}})
+
+stone_r.addEventListener('click', ()=> {
+  if(stone_r.classList.contains('selected')) {
+  stone_r.classList.remove('selected');
+  clearRightSelected()
+  } else {
+  to.value = 'stone'
+  stone_r.classList.add('selected');
+  place_r.innerHTML = '<div class="market-stone"></div>'
+  range.value = 0
+  input_l.value = 0
+  input_r.innerHTML = 0
+  // устанавливаем диапазон в зависимости от ресурса
+  if(gold_l.classList.contains('selected')) {
+    range.step = stone_per_gold
+    rate = 1/stone_per_gold
+  }else if(wood_l.classList.contains('selected')) {
+    range.step = wood_per_stone
+    rate = 1/wood_per_stone
+  }else if(stone_l.classList.contains('selected')) {
+    range.step = 0
+    rate = 0
+  }
+  clearGoldRight();
+  clearWoodRight();
+}})
+
+
+</script>
+{% endif %}
 {% endblock %}
 

@@ -1,16 +1,15 @@
 # hmom3 Online game
 
-
-
 ![Top language](https://img.shields.io/github/languages/top/KuzenkovAG/hmom3?style=flat-square&logo=appveyor)
 ![Languages count](https://img.shields.io/github/languages/count/KuzenkovAG/hmom3?style=flat-square&logo=appveyor)
 ![Commit activity](https://img.shields.io/github/commit-activity/m/KuzenkovAG/hmom3?style=flat-square&logo=appveyor)
 
 
-![alt text](preview/preview.png?raw=true)
-![alt text](preview/registration.jpg?raw=true)
-![alt text](preview/town.jpg?raw=true)
-![alt text](preview/build.jpg?raw=true)
+![alt text](screenshots/preview.png?raw=true)
+![alt text](screenshots/registration.jpg?raw=true)
+![alt text](screenshots/town.jpg?raw=true)
+![alt text](screenshots/build.jpg?raw=true)
+![alt text](screenshots/market.jpg?raw=true)
 
 ## Deployment on server
 [deploy] <- last working version
@@ -22,6 +21,9 @@
 
 
 ## History
++ *v.0.5.0*  
+Create page for trading resources;  
+Trading available after building marketplace (by click on building).  
 + *v.0.4.0*  
 Now increase gold incoming amount depend on administration building level;  
 Now increase resources storage amount depend on storager level.  

@@ -4,7 +4,6 @@ Define function of increasing resource depend on level.
 
 from django.conf import settings
 
-
 DEF_GOLD_INCOME = settings.DEF_GOLD_INCOME
 ROUND_COEF = 100
 

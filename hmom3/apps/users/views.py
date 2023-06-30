@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model, login
-from django.views.generic import CreateView
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
 from ..towns.models import Fraction
 from . import forms

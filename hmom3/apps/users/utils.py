@@ -37,10 +37,10 @@ def create_requirements(user):
 
         for requirement in requirements:
             obj2 = models.UserBuildingRequirement(
-                    building=obj,
-                    requirement=requirement.requirement,
-                    level=requirement.level,
-                )
+                building=obj,
+                requirement=requirement.requirement,
+                level=requirement.level,
+            )
             requirment_objects.append(obj2)
 
     models.UserBuildingRequirement.objects.bulk_create(requirment_objects)

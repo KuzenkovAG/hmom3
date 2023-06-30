@@ -10,7 +10,6 @@ import math
 
 from django.conf import settings
 
-
 BUILD_TIME_COEF = settings.BUILD_TIME_COEF
 SEARCH_TIME_COEF = settings.SEARCH_TIME_COEF
 RES_TIME_COEF = settings.RES_TIME_COEF
@@ -46,8 +45,8 @@ def get_research_time(level, tech=1, time=None):
 def get_gold_amount(level, tech=1, res=None):
     """Gold amount depend on level."""
     result = (
-        (1 / math.e ** (level - ZERO_EXPONENT) + GOLD_TIME_COEF) *
-        level ** GOLD_EXPONENT_COEF
+        (1 / math.e**(level - ZERO_EXPONENT) + GOLD_TIME_COEF)
+        * level**GOLD_EXPONENT_COEF
     ) * res / tech
     return int(result)
 
@@ -55,7 +54,7 @@ def get_gold_amount(level, tech=1, res=None):
 def get_resources_amount(level, tech=1, res=None):
     """Wood or stone amount depend on level."""
     result = (
-        (1 / math.e ** (level - ZERO_EXPONENT) + RES_TIME_COEF) *
-        level ** RES_EXPONENT_COEF
+        (1 / math.e**(level - ZERO_EXPONENT) + RES_TIME_COEF)
+        * level ** RES_EXPONENT_COEF
     ) * res / tech
     return int(result)

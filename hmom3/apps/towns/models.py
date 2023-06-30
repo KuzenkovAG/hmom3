@@ -1,8 +1,8 @@
-from django.db import models
-from django.contrib.auth import get_user_model
-from django.utils import timezone
 from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 
 from ..core.balance.duration_cost import get_building_time
 

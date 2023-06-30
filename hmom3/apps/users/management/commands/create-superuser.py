@@ -23,7 +23,8 @@ class Command(createsuperuser.Command):
 
         if not password or not username or not email:
             raise CommandError(
-                    "--email --username and --password are required options")
+                "--email --username and --password are required options"
+            )
 
         user_data = {
             'username': username,

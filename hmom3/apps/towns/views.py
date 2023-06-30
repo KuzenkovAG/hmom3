@@ -2,9 +2,9 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import RedirectView
 
-from .models import UserBuilding, BuildingInProcess
-from . import utils
 from ..core.views import ViewWithContext
+from . import utils
+from .models import BuildingInProcess, UserBuilding
 
 
 class TownView(ViewWithContext):
@@ -56,10 +56,10 @@ class ConstructBuildView(RedirectView):
             # check requirements
             if building.level > 0 or not building.user_building.all():
                 resource = utils.get_and_update_resources(user)
-                resource_condition = (
-                        building.gold <= resource.gold_amount and
-                        building.wood <= resource.wood_amount and
-                        building.stone <= resource.stone_amount
+                resource_condition = ((
+                    building.gold <= resource.gold_amount) and (
+                    building.wood <= resource.wood_amount) and (
+                    building.stone <= resource.stone_amount)
                 )
                 if resource_condition:
                     resource.gold_amount -= building.gold

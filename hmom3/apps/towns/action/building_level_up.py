@@ -1,9 +1,6 @@
 from django.shortcuts import get_object_or_404
 
-from ...core.balance.resources import (
-    get_resource_income,
-    get_resource_limit,
-)
+from ...core.balance.resources import get_resource_income, get_resource_limit
 from ..models import Resource
 
 

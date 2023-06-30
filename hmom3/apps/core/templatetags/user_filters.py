@@ -41,7 +41,7 @@ def is_even(number):
 @register.filter(name='split_half')
 def split_half(number):
     """Split number in half."""
-    return int(number/2)
+    return int(number / 2)
 
 
 @register.simple_tag

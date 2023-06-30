@@ -1,13 +1,9 @@
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 
+from ..core.balance import duration_cost
 from . import models
 from .action import building_level_up
-from ..core.balance.duration_cost import (
-    get_building_time,
-    get_gold_amount,
-    get_resources_amount
-)
 
 ACTION_ON_LEVEL_UP = {
     'hall': building_level_up.create_hall,
@@ -34,11 +30,19 @@ def _level_up(instance):
     base_gold = instance.building.type.base_gold
     base_wood = instance.building.type.base_wood
     base_stone = instance.building.type.base_stone
-    instance.building_time = get_building_time(
+    instance.building_time = duration_cost.get_building_time(
         level=instance.level, time=build_time)
-    instance.gold = get_gold_amount(level=instance.level, res=base_gold)
-    instance.wood = get_resources_amount(level=instance.level, res=base_wood)
-    instance.stone = get_resources_amount(level=instance.level, res=base_stone)
+    instance.gold = duration_cost.get_gold_amount(
+        level=instance.level,
+        res=base_gold
+    )
+    instance.wood = duration_cost.get_resources_amount(
+        level=instance.level,
+        res=base_wood
+    )
+    instance.stone = duration_cost.get_resources_amount(
+        level=instance.level, res=base_stone
+    )
     instance.save()
 
 

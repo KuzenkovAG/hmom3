@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  backend_tests:
+  pytest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -16,8 +16,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r ./requirements.txt
-      - name: Django test
+      - name: Pytest
         env:
-          DEBUG: True
+          DJANGO_SECRET_KEY: 'secret_key'
+          DEBUG: 'True'
         run: |
-          python backend/manage.py test
+          pytest

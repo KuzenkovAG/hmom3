@@ -36,6 +36,10 @@ INSTALLED_APPS = [
     'apps.webhooks.apps.WebhooksConfig'
 ]
 
+DEBUG_TOOLBAR_CONFIG = {
+    "SHOW_TOOLBAR_CALLBACK": lambda x: DEBUG,
+}
+
 AUTH_USER_MODEL = 'users.User'
 
 MIDDLEWARE = [
@@ -123,14 +127,6 @@ LOGIN_REDIRECT_URL = 'towns:index'
 LOGOUT_REDIRECT_URL = 'users:login'
 
 
-# debug-toolbar
-def show_toolbar(request):
-    return DEBUG
-
-
-DEBUG_TOOLBAR_CONFIG = {
-    "SHOW_TOOLBAR_CALLBACK": show_toolbar,
-}
 
 """Game balance settings."""
 # Resources

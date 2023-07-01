@@ -2,6 +2,8 @@
 
 ![Flake8](https://github.com/KuzenkovAG/hmom3/actions/workflows/ci.yml/badge.svg)
 ![Test](https://github.com/KuzenkovAG/hmom3/actions/workflows/tests.yml/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/KuzenkovAG/hmom3/badge.svg?branch=main)](https://coveralls.io/github/KuzenkovAG/hmom3?branch=main)
+
 ![Top language](https://img.shields.io/github/languages/top/KuzenkovAG/hmom3?style=flat-square&logo=appveyor)
 ![Languages count](https://img.shields.io/github/languages/count/KuzenkovAG/hmom3?style=flat-square&logo=appveyor)
 ![Commit activity](https://img.shields.io/github/commit-activity/m/KuzenkovAG/hmom3?style=flat-square&logo=appveyor)

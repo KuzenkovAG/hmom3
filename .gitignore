@@ -10,3 +10,4 @@ resurses_test/
 db.sqlite3
 
 to_do
+htmlcov

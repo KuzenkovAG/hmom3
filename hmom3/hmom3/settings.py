@@ -127,7 +127,6 @@ LOGIN_REDIRECT_URL = 'towns:index'
 LOGOUT_REDIRECT_URL = 'users:login'
 
 
-
 """Game balance settings."""
 # Resources
 DEF_GOLD_AMOUNT = 1000

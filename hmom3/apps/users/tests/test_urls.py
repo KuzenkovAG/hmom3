@@ -1,8 +1,8 @@
-from django.test import Client, TestCase
-from django.contrib.auth import get_user_model
 from http import HTTPStatus
 
 from apps.towns.models import Fraction
+from django.contrib.auth import get_user_model
+from django.test import Client, TestCase
 
 User = get_user_model()
 

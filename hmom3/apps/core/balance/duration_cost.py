@@ -5,22 +5,15 @@ Define function of increasing amount depend on building level:
  - Gold amount;
  - Resources (wood, stone) amount.
 """
-
 import math
 
-from django.conf import settings
-
-BUILD_TIME_COEF = settings.BUILD_TIME_COEF
-SEARCH_TIME_COEF = settings.SEARCH_TIME_COEF
-RES_TIME_COEF = settings.RES_TIME_COEF
-GOLD_TIME_COEF = settings.GOLD_TIME_COEF
-
-BUILD_EXPONENT_COEF = settings.BUILD_EXPONENT_COEF
-SEARCH_EXPONENT_COEF = settings.SEARCH_EXPONENT_COEF
-RES_EXPONENT_COEF = settings.RES_EXPONENT_COEF
-GOLD_EXPONENT_COEF = settings.GOLD_EXPONENT_COEF
-
-ZERO_EXPONENT = settings.ZERO_EXPONENT
+BUILD_TIME_COEF = 0.08
+SEARCH_TIME_COEF = 0.2
+RES_TIME_COEF = 0.2
+BUILD_EXPONENT_COEF = 3
+SEARCH_EXPONENT_COEF = 2
+RES_EXPONENT_COEF = 2.5
+ZERO_EXPONENT = 1
 
 
 def get_building_time(level, tech=1, time=None):
@@ -44,10 +37,13 @@ def get_research_time(level, tech=1, time=None):
 
 def get_gold_amount(level, tech=1, res=None):
     """Gold amount depend on level."""
-    result = (
-        (1 / math.e**(level - ZERO_EXPONENT) + GOLD_TIME_COEF)
-        * level**GOLD_EXPONENT_COEF
-    ) * res / tech
+    if level <= 10:
+        a, b = (127.7, -77)
+    elif level <= 20:
+        a, b = (630, -5100)
+    else:
+        a, b = (4250, -77500)
+    result = (a * level ** 2 + b * level) * tech + res / 3
     return int(result)
 
 
@@ -58,3 +54,8 @@ def get_resources_amount(level, tech=1, res=None):
         * level ** RES_EXPONENT_COEF
     ) * res / tech
     return int(result)
+
+
+if __name__ == '__main__':
+    for i in range(1, 51):
+        print(int(get_resources_amount(i, 1, 10)))

@@ -1,12 +1,9 @@
 """
 Define function of increasing resource depend on level.
 """
-
 from django.conf import settings
 
-DEF_GOLD_INCOME = settings.DEF_GOLD_INCOME
 ROUND_COEF = 100
-
 RESOURCE_BASE_LIMIT = {
     'gold': settings.DEF_GOLD_LIMIT,
     'wood': settings.DEF_WOOD_LIMIT,
@@ -30,7 +27,7 @@ def get_resource_income(level, tech=1, resource=None):
         a, b = (3, 80)
     else:
         a, b = (16, -180)
-    result = (a * level ** 2 + b * level) * tech + income / 3
+    result = (a * level ** 2 + b * level) * tech / 3 + income / 3
     return int(result)
 
 
@@ -48,3 +45,9 @@ def get_resource_limit(level, tech=1, resource=None):
         a, b = (113, -2066)
     result = (a * level ** 2 + b * level) * tech * income + limit
     return int(result) // ROUND_COEF * ROUND_COEF
+
+
+if __name__ == '__main__':
+    resource = 'gold'
+    for i in range(1, 51):
+        print(get_resource_income(i, 1, resource))

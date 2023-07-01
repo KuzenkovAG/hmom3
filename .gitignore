@@ -11,3 +11,5 @@ db.sqlite3
 
 to_do
 htmlcov
+.coverage
+reports

@@ -38,24 +38,27 @@ def get_research_time(level, tech=1, time=None):
 def get_gold_amount(level, tech=1, res=None):
     """Gold amount depend on level."""
     if level <= 10:
-        a, b = (127.7, -77)
+        a, b = (3.733, -2.33)
     elif level <= 20:
-        a, b = (630, -5100)
+        a, b = (11.5, -80)
     else:
-        a, b = (4250, -77500)
-    result = (a * level ** 2 + b * level) * tech + res / 3
+        a, b = (35, -550)
+    result = (a * level ** 2 + b * level) * tech * res
     return int(result)
 
 
 def get_resources_amount(level, tech=1, res=None):
     """Wood or stone amount depend on level."""
-    result = (
-        (1 / math.e**(level - ZERO_EXPONENT) + RES_TIME_COEF)
-        * level ** RES_EXPONENT_COEF
-    ) * res / tech
+    if level <= 10:
+        a, b = (0.066, 1.33)
+    elif level <= 20:
+        a, b = (0.8, -6.0)
+    else:
+        a, b = (2.333, -36.667)
+    result = (a * level ** 2 + b * level) * tech * res
     return int(result)
 
 
 if __name__ == '__main__':
-    for i in range(1, 51):
-        print(int(get_resources_amount(i, 1, 10)))
+    for i in range(1, 101):
+        print(int(get_resources_amount(i, 1, 1)))

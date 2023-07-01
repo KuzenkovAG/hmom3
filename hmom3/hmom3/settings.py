@@ -2,7 +2,6 @@ import os
 
 from dotenv import load_dotenv
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 load_dotenv()
@@ -34,6 +33,7 @@ INSTALLED_APPS = [
     'apps.stats.apps.StatsConfig',
     'apps.about.apps.AboutConfig',
     'apps.market.apps.MarketConfig',
+    'apps.webhooks.apps.WebhooksConfig'
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -115,8 +115,7 @@ STATIC_URL = '/static/'
 if DEBUG:
     STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
+    STATIC_ROOT = os.path.join('/home/momonline/static/')
 
 # Login
 LOGIN_URL = 'users:login'
@@ -132,7 +131,6 @@ def show_toolbar(request):
 DEBUG_TOOLBAR_CONFIG = {
     "SHOW_TOOLBAR_CALLBACK": show_toolbar,
 }
-
 
 """Game balance settings."""
 # Resources

@@ -9,6 +9,7 @@ urlpatterns = [
     path('statics/', include('apps.stats.urls', namespace='stats')),
     path('about/', include('apps.about.urls', namespace='about')),
     path('market/', include('apps.market.urls', namespace='market')),
+    path('hooks/', include('apps.webhooks.urls', namespace='webhooks')),
     path('management/', admin.site.urls),
 ]
 

@@ -2,7 +2,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path, reverse_lazy
 
 from ..core.decorators import for_not_authorized
-from . import views
+from . import forms, views
 
 app_name = 'users'
 
@@ -15,6 +15,7 @@ urlpatterns = [
     path(
         '',
         for_not_authorized(LoginView.as_view(
+            form_class=forms.LoginForm,
             template_name='users/login.html',
         )),
         name='login'

@@ -2,8 +2,7 @@
 {% load user_filters %}
 {% block title %}Войти{% endblock %}
 {% block content %}
-<div class="container d-flex justify-content-center">
-  <div class="login-page">
+<div align="center">
     <div class="game-logo">
       <div class="login-box">
         <div align="center">
@@ -18,8 +17,7 @@
               {% csrf_token %}
               {% for field in form %}
               <tr>
-
-                <th width="150px" style="text-align:right">
+                <th width="70px" style="text-align:right">
                   <label for="{{ field.id_for_label }}">{{ field.label }}</label>
                 </th>
                 <td>
@@ -35,7 +33,7 @@
               </button>
             </div>
           </form>
-          <div style="width: 450px; margin-top: 10px;">
+          <div style="width: 420px; margin-top: 10px;">
             <div class="signup-errors" style="text-align:center">
               {% for error in field.errors %}
               <p>{{ error }}</p>
@@ -44,15 +42,31 @@
               <p>{{ error2 }}</p>
               {% endfor %}
             </div>
-            <div>
-              <a class="black-links" style="position: relative; left: 210px; font-size: 18px;"
-                 href="{% url 'about:index' %}">О проекте</a>
-            </div>
           </div>
         </div>
       </div>
+      <div class="game-description" align="center">
+        <h5>Экономическая онлайн стратегия</h5>
+        <p>
+          Might and Magic Online - бесплатная браузерная многопользовательская
+          MMORPG, в жанре стратегии в реальном времени.
+        </p>
+        <p>
+          Выберите любимую фракцию, развивайте свой город, копите и
+          обменивайте ресурсы.<br><br>
+        </p>
+        <p>
+          Обо всех изменениях на проекте вы можете узнать
+          <a href="{% url 'about:index' %}">тут</a>.
+        </p>
+      </div>
+      <div class="login-footer">
+
+          <div class="footer-item" align="center">
+            <a class="white-links" href="{% url 'about:index' %}">История изменений</a>
+          </div>
+      </div>
     </div>
-  </div>
 </div>
 
 {% endblock %}

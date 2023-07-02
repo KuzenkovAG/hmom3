@@ -8,6 +8,9 @@ load_dotenv()
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 DEBUG = os.getenv('DEBUG').lower() == 'true'
 
+# Display version on pages
+VERSION = '0.5.1'
+
 ALLOWED_HOSTS = [
     'www.momonline.pythonanywhere.com',
     'momonline.pythonanywhere.com',

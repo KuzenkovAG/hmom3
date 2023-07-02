@@ -1,4 +1,5 @@
 from django import template
+from django.conf import settings
 from django.template.defaultfilters import floatformat
 
 register = template.Library()
@@ -64,3 +65,9 @@ def time_format(duration):
     minutes = (seconds % 3600) // 60
     seconds = (seconds % 60)
     return f'{hours:02d}:{minutes:02d}:{seconds:02d}'
+
+
+@register.simple_tag
+def get_version():
+    """Return current version."""
+    return f'v.{settings.VERSION}'

@@ -431,16 +431,34 @@ body.town {
     padding-top: 20px;
     width: 1080px;
     height: 1080px;
+    font-family: Verdana, sans-serif;
 }
 
 .login-box {
-    width: 1080px;
-    height: 232px;
-    margin-top: 670px;
-    margin-bottom: 60px;
-    padding-left: 6px;
-    font-size: 16px;
-    font-family: Bahnschrift Light;
+    width: 400px;
+    height: 300px;
+    margin-top: 435px;
+    margin-left: 10px;
+    margin-bottom: 50px;
+    font-size: 14px;
+    font-family: cursive;
+}
+
+.login-box h4 {
+    font-family: segoe print;
+}
+
+.game-description {
+  margin-bottom: 35px;
+  font-size: 16px;
+  color: #bab700;
+  font-family: arial;
+}
+
+.footer-item {
+  display: inline;
+  margin-left: 40px;
+  font-family: arial;
 }
 
 .fraction-box {
@@ -548,7 +566,7 @@ body.town {
 	     Forms
 \*---------------------*/
 .form-login {
-  width: 300px;
+  width: 250px;
 }
 
 
@@ -616,7 +634,14 @@ body.town {
 
 .about-history {
   width: 720px;
-  height: 450px;
+  height: 430px;
+  margin-bottom: 20px;
+}
+
+.version-cell {
+  vertical-align: top;
+  border-width: 6px;
+  border-color: #fff0;
 }
 
 .black-links {
@@ -626,6 +651,15 @@ body.town {
 .black-links:hover {
   color: #fff;
   transition: all 0.4s ease;
+}
+
+.white-links {
+  color: #d1d1d1;
+}
+
+.white-links:hover {
+  color: #fff;
+  transition: all 0.2s ease;
 }
 
 /*---------------------*\

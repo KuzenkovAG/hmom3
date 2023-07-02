@@ -136,8 +136,8 @@ DEF_GOLD_INCOME = 50
 DEF_WOOD_INCOME = 3
 DEF_STONE_INCOME = 3
 DEF_GOLD_LIMIT = 1000
-DEF_STONE_LIMIT = 300
-DEF_WOOD_LIMIT = 300
+DEF_STONE_LIMIT = 20
+DEF_WOOD_LIMIT = 20
 
 # Change icon depend on building level
 CHANGE_IMAGE_PER_LEVEL = 5  # image of building will change each this level

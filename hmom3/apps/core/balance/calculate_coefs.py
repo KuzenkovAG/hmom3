@@ -8,8 +8,8 @@ def calculate_coef(point1, point2):
 
 
 def main():
-    point1 = (20, 200)
-    point2 = (30, 1000)
+    point1 = (20, 500)
+    point2 = (30, 5000)
     print(*calculate_coef(point1, point2))
 
 

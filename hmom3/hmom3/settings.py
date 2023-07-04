@@ -131,10 +131,15 @@ LOGOUT_REDIRECT_URL = 'users:login'
 
 
 """Game balance settings."""
-# Resources
-DEF_GOLD_AMOUNT = 1000
-DEF_WOOD_AMOUNT = 25
-DEF_STONE_AMOUNT = 25
+"""
+Resources:
+ - amount - start amount on create user;
+ - income - increase per hour;
+ - limit - maximum of resource.
+"""
+DEF_GOLD_AMOUNT = 500
+DEF_WOOD_AMOUNT = 15
+DEF_STONE_AMOUNT = 15
 DEF_GOLD_INCOME = 50
 DEF_WOOD_INCOME = 3
 DEF_STONE_INCOME = 3

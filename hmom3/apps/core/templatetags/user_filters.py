@@ -33,7 +33,7 @@ def round_down(number):
 
 @register.filter(name='is_even')
 def is_even(number):
-    """Chech number is even or not."""
+    """Check number is even or not."""
     if number % 2 == 0:
         return True
     return False

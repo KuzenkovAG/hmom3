@@ -26,7 +26,7 @@ class UserCreationTest(TestCase):
         cls.hall = models.BuildingType.objects.create(
             name='hall',
             order=1,
-            base_time=dt.timedelta(1000),
+            base_time=dt.timedelta(minutes=1),
             base_gold=1000,
             base_wood=10,
             base_stone=10
@@ -34,7 +34,7 @@ class UserCreationTest(TestCase):
         cls.tavern = models.BuildingType.objects.create(
             name='tavern',
             order=2,
-            base_time=dt.timedelta(1000),
+            base_time=dt.timedelta(minutes=1),
             base_gold=1000,
             base_wood=10,
             base_stone=10

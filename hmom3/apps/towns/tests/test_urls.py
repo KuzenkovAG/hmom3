@@ -22,7 +22,7 @@ class AvailableURLTests(TestCase):
         cls.hall = models.BuildingType.objects.create(
             name='hall',
             order=1,
-            base_time=dt.timedelta(1000),
+            base_time=dt.timedelta(minutes=1),
             base_gold=1000,
             base_wood=10,
             base_stone=10
@@ -48,7 +48,7 @@ class AvailableURLTests(TestCase):
             ('/town/build/hall/', reverse('towns:build')),
         )
         cls.urls_redirect_quest = (
-            ('/town/', '/'),
+            ('/town/', reverse('users:login')),
             ('/town/build/', reverse('users:login')),
             ('/town/research/', reverse('users:login')),
             ('/town/army/', reverse('users:login')),

@@ -2,6 +2,14 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <meta charset="utf-8">
+  <meta name="msapplication-TileColor" content="#000">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="og:site_name" content="Might and Magic Online">
+  <meta name="og:title" content="Might and Magic Online - бесплатная
+    браузерная многопользовательская
+    MMORPG, в жанре стратегии в реальном времени.">
+  <meta name="og:image" content="{{ request.get_host }}{% get_static_prefix %}img/meta.jpg">
   {% include 'towns/includes/load_styles.html' %}
   <title>
     {% block title %}

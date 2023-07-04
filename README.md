@@ -9,11 +9,9 @@
 ![Commit activity](https://img.shields.io/github/commit-activity/m/KuzenkovAG/hmom3?style=flat-square&logo=appveyor)
 
 <div align="center">
-  <font size = 5> 
   <a href="http://momonline.pythonanywhere.com/">
     👉 Deploy on server 👈
   </a>
-  </font>
 </div>
 
 ![alt text](screenshots/preview.png?raw=true)

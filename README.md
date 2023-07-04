@@ -4,16 +4,20 @@
 ![Test](https://github.com/KuzenkovAG/hmom3/actions/workflows/tests.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/KuzenkovAG/hmom3/badge.svg)](https://coveralls.io/github/KuzenkovAG/hmom3)
 
+
+
 ![Top language](https://img.shields.io/github/languages/top/KuzenkovAG/hmom3?style=flat-square&logo=appveyor)
 ![Languages count](https://img.shields.io/github/languages/count/KuzenkovAG/hmom3?style=flat-square&logo=appveyor)
 ![Commit activity](https://img.shields.io/github/commit-activity/m/KuzenkovAG/hmom3?style=flat-square&logo=appveyor)
 
+<div style="font-size: 24px;" align="center">
+  <a href="http://momonline.pythonanywhere.com/">
+    👉 Deploy on server 👈
+  </a>
+</div>
 
 ![alt text](screenshots/preview.png?raw=true)
-![alt text](screenshots/registration.jpg?raw=true)
 ![alt text](screenshots/town.jpg?raw=true)
-![alt text](screenshots/build.jpg?raw=true)
-![alt text](screenshots/market.jpg?raw=true)
 
 ## Deployment on server
 [deploy] <- last working version
@@ -25,6 +29,8 @@
 
 
 ## History
++ *v.0.5.1*  
+Change buildings cost;
 + *v.0.5.0*  
 Create page for trading resources;  
 Trading available after building marketplace (by click on building).  
@@ -43,8 +49,7 @@ Create ability to make buildings;
 
 ## Future plan
 - Add ability to create Army;
-- Apply logic to increase gold amount;
-- Add page for statistics.
+- Add Heroes.
 
 ## Installation (windows)
 1. Clone repository

@@ -1,10 +1,11 @@
 import datetime as dt
 
-from apps.towns import models
 from django.contrib.auth import get_user_model
 from django.test import Client, TestCase
 from django.urls import reverse
 from django.utils import timezone
+
+from ...towns import models
 
 User = get_user_model()
 
@@ -57,7 +58,6 @@ class TestViews(TestCase):
         )
 
     def setUp(self):
-        self.guest_client = Client()
         self.authorized_client = Client()
         self.authorized_client.force_login(TestViews.user)
 
@@ -159,7 +159,6 @@ class CreateBuilding(TestCase):
         )
 
     def setUp(self):
-        self.guest_client = Client()
         self.authorized_client = Client()
         self.authorized_client.force_login(CreateBuilding.user)
 
@@ -330,7 +329,6 @@ class CantCreateBuilding(TestCase):
         models.BuildingInProcess.objects.filter(
             user=CantCreateBuilding.user,
         ).delete()
-        self.guest_client = Client()
         self.authorized_client = Client()
         self.authorized_client.force_login(CantCreateBuilding.user)
 

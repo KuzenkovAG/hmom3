@@ -215,9 +215,7 @@ class UserBuilding(models.Model):
     def get_absolute_url(self):
         """Depend on building generate related url."""
         name_space = BUILDING_URL.get(self.slug[2:])
-        if name_space:
-            return reverse(name_space)
-        return ''
+        return reverse(name_space) if name_space else ''
 
     def get_index(self) -> str:
         """

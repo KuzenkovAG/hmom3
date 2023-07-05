@@ -130,8 +130,8 @@ LOGIN_REDIRECT_URL = 'towns:index'
 LOGOUT_REDIRECT_URL = 'users:login'
 
 
-"""Game balance settings."""
-"""
+"""Game balance settings.
+
 Resources:
  - amount - start amount on create user;
  - income - increase per hour;

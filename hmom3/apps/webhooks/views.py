@@ -7,7 +7,7 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
-w_secret = settings.SECRET_KEY
+W_SECRET = settings.SECRET_KEY
 
 
 def is_verify_signature(payload_body, secret_token, signature_header):
@@ -31,13 +31,12 @@ def is_verify_signature(payload_body, secret_token, signature_header):
 def pull_repo(request):
     """
     Compare secret key, and pull repo to get changes from GitHub.
-
     """
     if request.method != 'POST':
         return HttpResponse('Wrong event.', status=HTTPStatus.BAD_REQUEST)
     x_hub_signature = request.headers.get('X-Hub-Signature-256')
 
-    if not is_verify_signature(request.body, w_secret, x_hub_signature):
+    if not is_verify_signature(request.body, W_SECRET, x_hub_signature):
         return HttpResponse('Wrong event.', status=HTTPStatus.BAD_REQUEST)
 
     repo = git.Repo('/home/momonline/hmom3')

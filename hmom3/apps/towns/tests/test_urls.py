@@ -1,10 +1,11 @@
 import datetime as dt
 from http import HTTPStatus
 
-from apps.towns import models
 from django.contrib.auth import get_user_model
 from django.test import Client, TestCase
 from django.urls import reverse
+
+from ...towns import models
 
 User = get_user_model()
 

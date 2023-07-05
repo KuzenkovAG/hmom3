@@ -27,7 +27,7 @@ def get_resource_income(level, tech=1, resource=None):
         a, b = (3, 80)
     else:
         a, b = (16, -180)
-    result = (a * level ** 2 + b * level) * tech / 3 + income / 3
+    result = (a * level ** 2 + b * level) * tech / 3 + income / 2
     return int(result)
 
 
@@ -55,4 +55,4 @@ def get_resource_limit(level, tech=1, resource=None):
 if __name__ == '__main__':
     resource = 'gold'
     for i in range(1, 101):
-        print(get_resource_limit(i, 1, resource))
+        print(get_resource_income(i, 1, resource))

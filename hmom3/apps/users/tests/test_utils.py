@@ -1,8 +1,9 @@
 import datetime as dt
 
-from apps.towns import models
 from django.contrib.auth import get_user_model
 from django.test import TestCase
+
+from ...towns import models
 
 User = get_user_model()
 

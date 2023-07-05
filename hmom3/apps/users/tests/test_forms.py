@@ -19,7 +19,7 @@ class FormTest(TestCase):
         cls.user = User.objects.create_user(
             username='Test_User',
             password='easy_password',
-            fraction=cls.fraction,
+            fraction=FormTest.fraction,
         )
         cls.login_data = {
             'username': 'Test_User',
@@ -30,7 +30,7 @@ class FormTest(TestCase):
             'email': 'test2@mail.ru',
             'password1': 'easy_password',
             'password2': 'easy_password',
-            'fraction': cls.fraction.id,
+            'fraction': FormTest.fraction.id,
         }
 
     def setUp(self):

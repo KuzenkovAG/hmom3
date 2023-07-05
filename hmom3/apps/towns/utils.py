@@ -58,10 +58,8 @@ def _create_building(building_in_process, user):
     )
     _level_up(user_building)
     action = ACTION_ON_LEVEL_UP.get(user_building.building.type.name)
-    try:
+    if action:
         action(user=user, user_building=user_building)
-    except TypeError:
-        pass
     building_in_process.delete()
 
     models.UserBuildingRequirement.objects.filter(

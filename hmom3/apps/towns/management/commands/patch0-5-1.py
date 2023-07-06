@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
-from ....core.balance.duration_cost import get_gold_amount
+from ....core.balance.duration import get_gold_amount
 from ....core.balance.resources import get_resource_income
 from ....towns import models
 

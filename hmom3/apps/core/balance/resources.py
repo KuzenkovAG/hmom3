@@ -1,5 +1,5 @@
 """
-Define function of increasing resource depend on level.
+Define function of increasing user resource depend on level.
 """
 from django.conf import settings
 

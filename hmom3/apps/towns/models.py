@@ -4,7 +4,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 
-from ..core.balance.duration_cost import get_building_time
+from ..core.balance.duration import get_building_time
 
 User = get_user_model()
 

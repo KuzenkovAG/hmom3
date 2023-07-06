@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
-from ....core.balance import duration_cost
+from ....core.balance import duration
 from ....towns import models
 
 DEF_GOLD_INCOME = settings.DEF_GOLD_INCOME
@@ -23,17 +23,17 @@ class Command(BaseCommand):
         ).all()
 
         for user_building in buildings:
-            user_building.gold = duration_cost.get_gold_amount(
+            user_building.gold = duration.get_gold_amount(
                 level=user_building.level + 1,
                 tech=1,
                 res=user_building.building.type.base_gold
             )
-            user_building.wood = duration_cost.get_resources_amount(
+            user_building.wood = duration.get_resources_amount(
                 level=user_building.level + 1,
                 tech=1,
                 res=user_building.building.type.base_wood
             )
-            user_building.stone = duration_cost.get_resources_amount(
+            user_building.stone = duration.get_resources_amount(
                 level=user_building.level + 1,
                 tech=1,
                 res=user_building.building.type.base_stone

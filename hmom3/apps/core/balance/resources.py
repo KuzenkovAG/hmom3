@@ -20,8 +20,9 @@ def get_resource_income(level, tech=1, resource=None):
     """Gold income depend on hall level and tech."""
 
     income = RESOURCE_BASE_INCOME.get(resource, 0)
-
-    if level <= 10:
+    if level == 0:
+        return income
+    elif level <= 10:
         a, b = (1.11, 98.99)
     elif level <= 20:
         a, b = (3, 80)
@@ -50,9 +51,3 @@ def get_resource_limit(level, tech=1, resource=None):
     if limit > ROUND_COEF:
         return int(result) // ROUND_COEF * ROUND_COEF
     return int(result)
-
-
-if __name__ == '__main__':
-    resource = 'gold'
-    for i in range(1, 101):
-        print(get_resource_income(i, 1, resource))

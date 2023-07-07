@@ -29,8 +29,3 @@ def get_research_time(level, tech=1, time=None):
          ) * time / tech
     )
     return result
-
-
-if __name__ == '__main__':
-    for i in range(1, 101):
-        print(int(get_research_time(i, 1, 1)))

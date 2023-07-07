@@ -12,9 +12,18 @@ urlpatterns = [
     path('market/', include('apps.market.urls', namespace='market')),
     path('hooks/', include('apps.webhooks.urls', namespace='webhooks')),
     path('management/', admin.site.urls),
-    path('robots.txt', TemplateView.as_view(
-        template_name='robots.txt',
-        content_type='text/plain')
+    path(
+        'yandex_ab06da8ab2a9aead.html',
+        TemplateView.as_view(
+            template_name='search_system/yandex_ab06da8ab2a9aead.html'
+        )
+    ),
+    path(
+        'robots.txt',
+        TemplateView.as_view(
+            template_name='search_system/robots.txt',
+            content_type='text/plain'
+        )
     ),
 ]
 

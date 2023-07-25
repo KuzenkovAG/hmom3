@@ -1,14 +1,17 @@
-# hmom3 Online game
+# Might & Magic Online MMORPG
 
 ![Flake8](https://github.com/KuzenkovAG/hmom3/actions/workflows/ci.yml/badge.svg)
 ![Test](https://github.com/KuzenkovAG/hmom3/actions/workflows/tests.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/KuzenkovAG/hmom3/badge.svg?branch=main)](https://coveralls.io/github/KuzenkovAG/hmom3?branch=main)
 
-![Top language](https://img.shields.io/github/languages/top/KuzenkovAG/hmom3?style=flat-square&logo=appveyor)
-![Languages count](https://img.shields.io/github/languages/count/KuzenkovAG/hmom3?style=flat-square&logo=appveyor)
-![Commit activity](https://img.shields.io/github/commit-activity/m/KuzenkovAG/hmom3?style=flat-square&logo=appveyor)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)
+![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
-<div align="center">
+<div align="center" style="font-size: 18px;">
   <a href="http://momonline.pythonanywhere.com/">
     👉 Deploy on server 👈
   </a>
